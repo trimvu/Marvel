@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function App() {
+
+const App = () => {
+
+  const API_KEY = process.env.REACT_APP_API_KEY
+
+  const [searchInput, setSearchInput] = useState("");
+
+  const navigate = useNavigate();
+
+  const fetchInput = async () => {
+    let url = `https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&orderBy=name&apikey=${API_KEY}`
+
+    let results = await fetch(url);
+
+    let data = await results.json();
+    
+    // console.log("the data:", data)
+
+    setSearchInput(data.Search)
+
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // setSubmittedSearchInput(searchInput)
+    fetchInput(searchInput)
+    console.log(searchInput)
+
+    navigate(`/character/${searchInput}`)
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      App
+      <div>
+          
+          <form onSubmit={handleSubmit}>
+              <input type="text" value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} />
+              <input type="submit" />
+          </form>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
