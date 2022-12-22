@@ -7,6 +7,8 @@ const Characters = () => {
 
   const [characterInfo, setCharacterInfo] = useState()
   const [availableSeries, setAvailableSeries] = useState()
+  const [image, setImage] = useState()
+  const [description, setDescription] = useState()
   
   let {character} = useParams()
   
@@ -23,9 +25,11 @@ const Characters = () => {
 
     setCharacterInfo(details.data.results[0]);
     setAvailableSeries(details.data.results[0].series.available)
+    setDescription(details.description)
+    setImage(details.data.results[0].thumbnail.path)
 
-    // console.log("characterInfo:", characterInfo);
-    console.log(availableSeries);
+    console.log("characterInfo:", characterInfo);
+    // console.log(availableSeries);
 
   }
 
@@ -47,12 +51,28 @@ const Characters = () => {
           <div>
             <h1>{characterInfo.name}</h1>
             <p>{characterInfo.description}</p>
+            <h2>Image</h2>
+            <img src={`${image}.jpg`} ></img>
             <h2>Series</h2>
             <p>{characterInfo.series.items[0].name}</p>
           </div>
         }
 
-        {availableSeries}
+{/* THIS DOES NOT WORK */}
+        {/* <h2>Description</h2>
+        {
+          description === ""
+          ?
+          "This character does not have a description available"
+          :
+          <div>
+            {description}
+          </div>
+        } */}
+
+        <br /><br />
+
+        {availableSeries} 
 
     </>
   )
