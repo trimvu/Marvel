@@ -11,7 +11,9 @@ const App = () => {
   const navigate = useNavigate();
 
   const fetchInput = async () => {
-    let url = `https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&orderBy=name&apikey=${API_KEY}`
+    // let url = `https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&orderBy=name&apikey=${API_KEY}`
+
+    let url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchInput}&orderBy=name&apikey=${API_KEY}`
 
     let results = await fetch(url);
 
@@ -29,7 +31,7 @@ const App = () => {
     fetchInput(searchInput)
     console.log(searchInput)
 
-    navigate(`/character/${searchInput}`)
+    navigate(`/characters-results/${searchInput}`)
 
   }
 
