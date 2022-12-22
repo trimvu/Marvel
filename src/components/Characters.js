@@ -9,6 +9,7 @@ const Characters = () => {
   const [availableSeries, setAvailableSeries] = useState()
   const [image, setImage] = useState()
   const [description, setDescription] = useState()
+  const [series, setSeries] = useState([])
   
   let {character} = useParams()
   
@@ -26,11 +27,36 @@ const Characters = () => {
     setAvailableSeries(details.data.results[0].series.available)
     setDescription(details.description)
     setImage(details.data.results[0].thumbnail.path)
+    // setSeries(details.data.results[0].series[`${page}`])
 
-    console.log("characterInfo:", characterInfo);
+    let charArr = [];
+    let i = 0;
+    // let resultArr = [];
+
+  // do {
+  //   // resultArr = setSeries(details.data.results[0].series[i])
+  //   charArr.push(setSeries(details.data.results[0].series[i]));
+  //   i++
+  // } while (i < availableSeries);
+
+  for (let i=0; i < availableSeries; i++) {
+    if (details.data.results[0].series[i]) {
+      charArr.push(details.data.results[0].series[i]);
+    }
+    setSeries(charArr);
+  }
+
+
+    // console.log("The charArr: ", charArr);
+
+    // console.log("characterInfo:", characterInfo);
     // console.log(availableSeries);
 
   }
+
+  console.log(typeof availableSeries)
+  // console.log("character info: ", characterInfo)
+  console.log("series: ", series)
 
   useEffect(() => {
 
@@ -72,6 +98,25 @@ const Characters = () => {
         <br /><br />
 
         {availableSeries} 
+
+        {/* <h2>Series</h2> */}
+
+        {/* {
+          series === undefined
+          ?
+          ''
+          :
+          series.map(info => {
+              return (
+                  <ul key={info.id}>
+                      <li>
+                          info.name
+                      </li>
+                  </ul>
+              )
+
+          })
+        } */}
 
     </>
   )
