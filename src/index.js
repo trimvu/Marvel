@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Characters from './components/Characters'
+import CharactersResults from './components/CharactersResults';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,8 +13,9 @@ root.render(
     <Router>
       {/* <BaseLayout> */}
         <Routes>
-          <Route path='/' element={<App />}/>
-          <Route path='/character/:character' element={<Characters />}/>
+          <Route path='/' element={<App /> } />
+          <Route path='/characters-results/:search' element={<CharactersResults /> } />
+          <Route path='/character/:character' element={<Characters /> } />
         </Routes>
       {/* </BaseLayout> */}
     </Router>
