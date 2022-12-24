@@ -9,6 +9,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  color: white;
 }
 
 code {
@@ -16,3 +17,12 @@ code {
     monospace;
 }
 
+.search-bar {
+  margin: auto;
+  display: block;
+}
+
+.options {
+  margin: auto;
+  display: block;
+}

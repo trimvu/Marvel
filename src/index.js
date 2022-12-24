@@ -6,11 +6,19 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Characters from './components/Characters'
 import CharactersResults from './components/CharactersResults';
 import BaseLayout from './components/layout/BaseLayout';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux'
+import rootReducer from './reducers/reducer';
+
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
+)
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <Provider store={store}>
+  <Provider store={store}>
     <Router>
       <BaseLayout>
         <Routes>
@@ -20,6 +28,6 @@ root.render(
         </Routes>
       </BaseLayout>
     </Router>
-  // </Provider>
+  </Provider>
 );
 
