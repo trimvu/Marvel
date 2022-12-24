@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector} from 'react-redux'
+import incrementAction from '../actions/incrementAction'
+import decrementAction from '../actions/decrementAction'
 
 const Characters = () => {
   
@@ -9,7 +12,18 @@ const Characters = () => {
   const [availableSeries, setAvailableSeries] = useState()
   const [image, setImage] = useState()
   const [description, setDescription] = useState()
-  const [series, setSeries] = useState([])
+  // const [series, setSeries] = useState([])
+
+  const [series1, setSeries1] = useState()
+  const [series2, setSeries2] = useState()
+  const [series3, setSeries3] = useState()
+  const [series4, setSeries4] = useState()
+  const [series5, setSeries5] = useState()
+
+  const [additionalInfo, setAdditionalInfo] = useState()
+
+  const dispatch = useDispatch();
+  const items = useSelector(state => state.items)
   
   let {character} = useParams()
   
@@ -27,10 +41,21 @@ const Characters = () => {
     setAvailableSeries(details.data.results[0].series.available)
     setDescription(details.description)
     setImage(details.data.results[0].thumbnail.path)
-    // setSeries(details.data.results[0].series[`${page}`])
 
-    let charArr = [];
-    let i = 0;
+    // setSeries(details.data.results[0].series.items[items])
+
+
+
+    setSeries1(details.data.results[0].series.items[60])
+    setSeries2(details.data.results[0].series.items[items+1])
+    setSeries3(details.data.results[0].series.items[items+2])
+    setSeries4(details.data.results[0].series.items[items+3])
+    setSeries5(details.data.results[0].series.items[items+4])
+    
+    setAdditionalInfo(details.data.results[0].urls[0].url)
+
+    // let charArr = [];
+    // let i = 0;
     // let resultArr = [];
 
   // do {
@@ -39,30 +64,32 @@ const Characters = () => {
   //   i++
   // } while (i < availableSeries);
 
-  for (let i=0; i < availableSeries; i++) {
-    if (details.data.results[0].series[i]) {
-      charArr.push(details.data.results[0].series[i]);
-    }
-    setSeries(charArr);
-  }
+  // for (let i=0; i < availableSeries; i++) {
+  //   if (details.data.results[0].series[i]) {
+  //     charArr.push(details.data.results[0].series[i]);
+  //   }
+  //   setSeries(charArr);
+  // }
 
 
     // console.log("The charArr: ", charArr);
 
-    // console.log("characterInfo:", characterInfo);
+    console.log("characterInfo: ", characterInfo);
+    // console.log(detail)
     // console.log(availableSeries);
 
   }
 
   console.log(typeof availableSeries)
   // console.log("character info: ", characterInfo)
-  console.log("series: ", series)
+  // console.log("series: ", series)
+  console.log("series 60:", series1)
 
   useEffect(() => {
 
     characterDetail();
 
-  }, [])
+  }, [items])
 
   return (
     <>
@@ -78,8 +105,6 @@ const Characters = () => {
             <p>{characterInfo.description}</p>
             <h2>Image</h2>
             <img src={`${image}.jpg`} ></img>
-            <h2>Series</h2>
-            <p>{characterInfo.series.items[0].name}</p>
           </div>
         }
 
@@ -117,6 +142,63 @@ const Characters = () => {
 
           })
         } */}
+
+        {/* <h2>Additional Info: </h2> */}
+
+        <h2>Series: {items}</h2>
+        <h2>
+          {
+            series1 === undefined
+            ?
+            ''
+            :
+            series1.name
+          }
+          <br />
+          {
+            series2 === undefined
+            ?
+            ''
+            :
+            series2.name
+          }
+          <br />
+          {
+            series3 === undefined
+            ?
+            ''
+            :
+            series3.name
+          }
+          <br />
+          {
+            series4 === undefined
+            ?
+            ''
+            :
+            series4.name
+          }
+          <br />
+          {
+            series5 === undefined
+            ?
+            ''
+            :
+            series5.name
+          }
+        </h2>
+        <button onClick={() => dispatch(decrementAction(5))}>Decrease Counter</button>
+        <button onClick={() => dispatch(incrementAction(5))}>Increase Counter</button>
+        
+        <div>
+          <h2>
+            <a href={additionalInfo} target="_blank">
+              Additional Information
+            </a>
+          </h2>
+        </div>
+
+        
 
     </>
   )
