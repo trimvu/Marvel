@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 import incrementAction from '../actions/incrementAction'
 import decrementAction from '../actions/decrementAction'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 
 const Characters = () => {
   
@@ -19,6 +22,9 @@ const Characters = () => {
   const [series3, setSeries3] = useState()
   const [series4, setSeries4] = useState()
   const [series5, setSeries5] = useState()
+
+  const [characterID, setCharacterID] = useState()
+  const [collectionSeriesURI, setCollectionSeriesURI] = useState()
 
   const [additionalInfo, setAdditionalInfo] = useState()
 
@@ -46,11 +52,33 @@ const Characters = () => {
 
 
 
-    setSeries1(details.data.results[0].series.items[60])
-    setSeries2(details.data.results[0].series.items[items+1])
-    setSeries3(details.data.results[0].series.items[items+2])
-    setSeries4(details.data.results[0].series.items[items+3])
-    setSeries5(details.data.results[0].series.items[items+4])
+    // setSeries1(details.data.results[0].series.items[items])
+    // setSeries2(details.data.results[0].series.items[items+1])
+    // setSeries3(details.data.results[0].series.items[items+2])
+    // setSeries4(details.data.results[0].series.items[items+3])
+    // setSeries5(details.data.results[0].series.items[items+4])
+
+    setCharacterID(details.data.results[0].id)
+    setCollectionSeriesURI(`https://gateway.marvel.com:443/v1/public/characters/${characterID}/series?apikey=${API_KEY}`)
+
+    const series = await fetch(collectionSeriesURI)
+
+    const seriesDetails = await series.json();
+
+    console.log("series details: ", seriesDetails)
+
+    setSeries1(seriesDetails.data.results[items])
+    setSeries2(seriesDetails.data.results[items+1])
+    setSeries3(seriesDetails.data.results[items+2])
+    setSeries4(seriesDetails.data.results[items+3])
+    setSeries5(seriesDetails.data.results[items+4])
+    
+    // const seriesFetch = async () => {
+
+
+    // }
+
+    // seriesFetch()
     
     setAdditionalInfo(details.data.results[0].urls[0].url)
 
@@ -83,7 +111,8 @@ const Characters = () => {
   console.log(typeof availableSeries)
   // console.log("character info: ", characterInfo)
   // console.log("series: ", series)
-  console.log("series 60:", series1)
+  // console.log("series 60:", series1)
+  console.log(characterID)
 
   useEffect(() => {
 
@@ -146,13 +175,25 @@ const Characters = () => {
         {/* <h2>Additional Info: </h2> */}
 
         <h2>Series: {items}</h2>
-        <h2>
+
+
+        <div>
           {
             series1 === undefined
             ?
             ''
             :
-            series1.name
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={`${series1.thumbnail.path}.jpg`} />
+              <Card.Body>
+                <Card.Title>{series1.title}</Card.Title>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+            // <div>
+            //   <h2>{series1.title}</h2><br />
+            //   <img src={`${series1.thumbnail.path}.jpg`} ></img>
+            // </div>
           }
           <br />
           {
@@ -160,7 +201,13 @@ const Characters = () => {
             ?
             ''
             :
-            series2.name
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={`${series2.thumbnail.path}.jpg`} />
+              <Card.Body>
+                <Card.Title>{series2.title}</Card.Title>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           }
           <br />
           {
@@ -168,7 +215,13 @@ const Characters = () => {
             ?
             ''
             :
-            series3.name
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={`${series3.thumbnail.path}.jpg`} />
+              <Card.Body>
+                <Card.Title>{series3.title}</Card.Title>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           }
           <br />
           {
@@ -176,7 +229,13 @@ const Characters = () => {
             ?
             ''
             :
-            series4.name
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={`${series4.thumbnail.path}.jpg`} />
+              <Card.Body>
+                <Card.Title>{series4.title}</Card.Title>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           }
           <br />
           {
@@ -184,11 +243,18 @@ const Characters = () => {
             ?
             ''
             :
-            series5.name
+            <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src={`${series5.thumbnail.path}.jpg`} />
+              <Card.Body>
+                <Card.Title>{series5.title}</Card.Title>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           }
-        </h2>
-        <button onClick={() => dispatch(decrementAction(5))}>Decrease Counter</button>
-        <button onClick={() => dispatch(incrementAction(5))}>Increase Counter</button>
+          
+        </div>
+        <button onClick={() => dispatch(decrementAction(5))} >Back</button>
+        <button onClick={() => dispatch(incrementAction(5))} >More</button>
         
         <div>
           <h2>
