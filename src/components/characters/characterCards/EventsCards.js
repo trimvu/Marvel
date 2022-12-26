@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
-import incrementEventsAction from '../actions/incrementEventsAction'
-import decrementEventsAction from '../actions/decrementEventsAction'
+import incrementEventsAction from '../../../actions/incrementEventsAction'
+import decrementEventsAction from '../../../actions/decrementEventsAction'
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';

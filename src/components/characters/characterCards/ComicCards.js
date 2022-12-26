@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
-import incrementComicAction from '../actions/incrementComicAction'
-import decrementComicAction from '../actions/decrementComicAction'
+import incrementComicAction from '../../../actions/incrementComicAction'
+import decrementComicAction from '../../../actions/decrementComicAction'
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';

@@ -5,16 +5,16 @@ import App from './App';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BaseLayout from './components/layout/BaseLayout';
 
-import Characters from './components/Characters'
-import CharactersResults from './components/CharactersResults';
-import ComicResults from './components/ComicResults';
-import Comic from './components/Comic';
-import Events from './components/Events';
-import EventsResults from './components/EventsResults';
-import Series from './components/Series';
-import SeriesResults from './components/SeriesResults';
-import Stories from './components/Stories';
-import StoriesResults from './components/StoriesResults';
+import Characters from './components/characters/Characters'
+import CharactersResults from './components/characters/CharactersResults';
+import Comic from './components/comic/Comic';
+import ComicResults from './components/comic/ComicResults';
+import Events from './components/events/Events';
+import EventsResults from './components/events/EventsResults';
+import Series from './components/series/Series';
+import SeriesResults from './components/series/SeriesResults';
+import Stories from './components/stories/Stories';
+import StoriesResults from './components/stories/StoriesResults';
 
 import {Provider} from 'react-redux';
 import {createStore} from 'redux'
