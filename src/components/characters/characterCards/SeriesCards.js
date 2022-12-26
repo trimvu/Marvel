@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
-import incrementSeriesAction from '../actions/incrementSeriesAction'
-import decrementSeriesAction from '../actions/decrementSeriesAction'
+import incrementSeriesAction from '../../../actions/incrementSeriesAction'
+import decrementSeriesAction from '../../../actions/decrementSeriesAction'
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';

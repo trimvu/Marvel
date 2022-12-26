@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
-import './style/Characters.css'
+import '../style/Characters.css'
 
-import ComicCards from '../cards/ComicCards'
-import EventsCards from '../cards/EventsCards'
-import SeriesCards from '../cards/SeriesCards'
-import StoriesCards from '../cards/StoriesCards'
+import ComicCards from './characterCards/ComicCards'
+import EventsCards from './characterCards/EventsCards'
+import SeriesCards from './characterCards/SeriesCards'
+import StoriesCards from './characterCards/StoriesCards'
 
 const Characters = () => {
   
