@@ -1,21 +1,21 @@
-import decrementCharactersActions from './decrementCharactersAction'
-import decrementComicActions from './decrementComicAction'
+import decrementCharactersAction from './decrementCharactersAction'
+import decrementComicAction from './decrementComicAction'
 import decrementEventsAction from './decrementEventsAction'
 import decrementSeriesAction from './decrementSeriesAction'
 import decrementStoriesAction from './decrementStoriesAction'
-import incrementCharactersActions from './incrementCharactersAction'
+import incrementCharactersAction from './incrementCharactersAction'
 import incrementComicAction from './incrementComicAction'
 import incrementEventsAction from './incrementEventsAction'
 import incrementSeriesAction from './incrementSeriesAction'
 import incrementStoriesAction from './incrementStoriesAction'
 
 const allActions = {
-    decrementCharactersActions,
-    decrementComicActions,
+    decrementCharactersAction,
+    decrementComicAction,
     decrementEventsAction,
     decrementSeriesAction,
     decrementStoriesAction,
-    incrementCharactersActions,
+    incrementCharactersAction,
     incrementComicAction,
     incrementEventsAction,
     incrementSeriesAction,

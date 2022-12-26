@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
-import incrementStoriesAction from '../../../actions/incrementStoriesAction'
-import decrementStoriesAction from '../../../actions/decrementStoriesAction'
+import allActions from '../../../actions/index';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -114,8 +113,8 @@ const StoriesCards = ({characterID}) => {
             </Col>
           </Row>
         </Container>
-        <button onClick={() => dispatch(decrementStoriesAction(4))} >Back</button>
-        <button onClick={() => dispatch(incrementStoriesAction(4))} >More</button>
+        <button onClick={() => dispatch(allActions.decrementStoriesAction(4))} >Back</button>
+        <button onClick={() => dispatch(allActions.incrementStoriesAction(4))} >More</button>
     </>
   )
 }

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
-import incrementSeriesAction from '../../../actions/incrementSeriesAction'
-import decrementSeriesAction from '../../../actions/decrementSeriesAction'
+import allActions from '../../../actions/index';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -114,8 +113,8 @@ const SeriesCards = ({characterID}) => {
             </Col>
           </Row>
         </Container>
-        <button onClick={() => dispatch(decrementSeriesAction(4))} >Back</button>
-        <button onClick={() => dispatch(incrementSeriesAction(4))} >More</button>
+        <button onClick={() => dispatch(allActions.decrementSeriesAction(4))} >Back</button>
+        <button onClick={() => dispatch(allActions.incrementSeriesAction(4))} >More</button>
     </>
   )
 }
