@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
-import incrementEventsAction from '../../../actions/incrementEventsAction'
-import decrementEventsAction from '../../../actions/decrementEventsAction'
+import allActions from '../../../actions/index';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -114,8 +113,8 @@ const EventsCards = ({characterID}) => {
             </Col>
           </Row>
         </Container>
-        <button onClick={() => dispatch(decrementEventsAction(4))} >Back</button>
-        <button onClick={() => dispatch(incrementEventsAction(4))} >More</button>
+        <button onClick={() => dispatch(allActions.decrementEventsAction(4))} >Back</button>
+        <button onClick={() => dispatch(allActions.incrementEventsAction(4))} >More</button>
     </>
   )
 }
