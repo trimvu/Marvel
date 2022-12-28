@@ -21,6 +21,11 @@ const ComicCards = ({characterID}) => {
   const [comic3, setComic3] = useState()
   const [comic4, setComic4] = useState()
 
+  const [comicID1, setComicID1] = useState()
+  const [comicID2, setComicID2] = useState()
+  const [comicID3, setComicID3] = useState()
+  const [comicID4, setComicID4] = useState()
+
   const dispatch = useDispatch();
   const items_comic = useSelector(state => state.comic.items_comic)
 
@@ -32,12 +37,17 @@ const ComicCards = ({characterID}) => {
     
     const details = await data.json();
 
-    console.log(details)
+    console.log("comic cards details: ", details)
 
     setComic1(details.data.results[items_comic])
     setComic2(details.data.results[items_comic+1])
     setComic3(details.data.results[items_comic+2])
     setComic4(details.data.results[items_comic+3])
+
+    setComicID1(details.data.results[items_comic].id)
+    setComicID2(details.data.results[items_comic+1].id)
+    setComicID3(details.data.results[items_comic+2].id)
+    setComicID4(details.data.results[items_comic+3].id)
 
   }
 
@@ -45,7 +55,7 @@ const ComicCards = ({characterID}) => {
 
       comicDetail();
 
-  }, [items_comic, characterID])
+  }, [items_comic, characterID, comicID1])
 
   return (
     <>
@@ -65,7 +75,7 @@ const ComicCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${comic1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{comic1.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/comic/${comic1.title}`} className="">View comic</Link></Button>
+                    <Button variant="danger"><Link to={`/comic/${comic1.title}`} state={{comicID: comicID1}} className="">View comic {comicID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -80,7 +90,7 @@ const ComicCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${comic2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{comic2.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/comic/${comic2.title}`} className="">View comic</Link></Button>
+                    <Button variant="danger"><Link to={`/comic/${comic2.title}`} state={{comicID: comicID2}} className="">View comic {comicID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -95,7 +105,7 @@ const ComicCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${comic3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{comic3.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/comic/${comic3.title}`} className="">View comic</Link></Button>
+                    <Button variant="danger"><Link to={`/comic/${comic3.title}`} state={{comicID: comicID3}} className="">View comic {comicID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -110,7 +120,7 @@ const ComicCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${comic4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{comic4.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/comic/${comic4.title}`} className="">View comic</Link></Button>
+                    <Button variant="danger"><Link to={`/comic/${comic4.title}`} state={{comicID: comicID4}} className="">View comic {comicID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }
