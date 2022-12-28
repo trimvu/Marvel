@@ -19,21 +19,33 @@ const EventsCards = ({characterID}) => {
   const [events3, setEvents3] = useState()
   const [events4, setEvents4] = useState()
 
+  const [eventsID1, setEventsID1] = useState()
+  const [eventsID2, setEventsID2] = useState()
+  const [eventsID3, setEventsID3] = useState()
+  const [eventsID4, setEventsID4] = useState()
+
   const dispatch = useDispatch();
   const items_events = useSelector(state => state.events.items_events)
 
   const eventsDetail = async () => {
 
-    const url = `https://gateway.marvel.com:443/v1/public/characters/${characterID}/events?apikey=${API_KEY}`
+    const url = `https://gateway.marvel.com:443/v1/public/characters/${characterID}/events?apikey=${API_KEY}&limit=4&offset=${items_events}`
     
     const data = await fetch(url)
     
     const details = await data.json();
 
-    setEvents1(details.data.results[items_events])
-    setEvents2(details.data.results[items_events+1])
-    setEvents3(details.data.results[items_events+2])
-    setEvents4(details.data.results[items_events+3])
+    // console.log("events card details: ", details)
+
+    setEvents1(details.data.results[0])
+    setEvents2(details.data.results[1])
+    setEvents3(details.data.results[2])
+    setEvents4(details.data.results[3])
+
+    setEventsID1(details.data.results[0].id)
+    setEventsID2(details.data.results[1].id)
+    setEventsID3(details.data.results[2].id)
+    setEventsID4(details.data.results[3].id)
 
   }
 
@@ -61,7 +73,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events1.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/events/${events1.title}`} className="">View events</Link></Button>
+                    <Button variant="warning"><Link to={`/events/${events1.title}`} state={{eventsID: eventsID1}} className="">View events {eventsID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -76,7 +88,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events2.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/events/${events2.title}`} className="">View events</Link></Button>
+                    <Button variant="warning"><Link to={`/events/${events2.title}`} state={{eventsID: eventsID2}} className="">View events {eventsID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -91,7 +103,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events3.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/events/${events3.title}`} className="">View events</Link></Button>
+                    <Button variant="warning"><Link to={`/events/${events3.title}`} state={{eventsID: eventsID3}} className="">View events {eventsID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -106,7 +118,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events4.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/events/${events4.title}`} className="">View events</Link></Button>
+                    <Button variant="warning"><Link to={`/events/${events4.title}`} state={{eventsID: eventsID4}} className="">View events {eventsID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }

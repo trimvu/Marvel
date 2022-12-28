@@ -47,7 +47,7 @@ const Characters = () => {
 
     characterDetail();
 
-  }, [characterID])
+  }, [characterID, image])
 
   return (
     <>
@@ -80,7 +80,7 @@ const Characters = () => {
         <SeriesCards characterID={characterID} />
 
         //! STORIES
-        <StoriesCards characterID={characterID} />
+        <StoriesCards characterID={characterID} image={image}/>
 
         <div>
           <h2>

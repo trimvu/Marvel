@@ -10,8 +10,6 @@ import '../style/Characters.css'
 
 const Comic = (props) => {
 
-  // console.log("comicID is: ", comicID1)
-
   const location = useLocation();
 
   // console.log("props: ", props)
@@ -32,7 +30,7 @@ const Comic = (props) => {
 
     const details = await data.json();
 
-    console.log("comic details:", details)
+    // console.log("comic details:", details)
 
     setComicInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
