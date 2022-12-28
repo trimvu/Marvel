@@ -19,22 +19,33 @@ const SeriesCards = ({characterID}) => {
     const [series3, setSeries3] = useState()
     const [series4, setSeries4] = useState()
 
+    const [seriesID1, setSeriesID1] = useState()
+    const [seriesID2, setSeriesID2] = useState()
+    const [seriesID3, setSeriesID3] = useState()
+    const [seriesID4, setSeriesID4] = useState()
+
     const dispatch = useDispatch();
     const items_series = useSelector(state => state.series.items_series)
 
     const seriesDetail = async () => {
 
-        const url = `https://gateway.marvel.com:443/v1/public/characters/${characterID}/series?apikey=${API_KEY}`
+        const url = `https://gateway.marvel.com:443/v1/public/characters/${characterID}/series?apikey=${API_KEY}&limit=4&offset=${items_series}`
         
         const data = await fetch(url)
         
         const details = await data.json();
 
-        setSeries1(details.data.results[items_series])
-        setSeries2(details.data.results[items_series+1])
-        setSeries3(details.data.results[items_series+2])
-        setSeries4(details.data.results[items_series+3])
+        console.log("series cards details: ", details)
 
+        setSeries1(details.data.results[0])
+        setSeries2(details.data.results[1])
+        setSeries3(details.data.results[2])
+        setSeries4(details.data.results[3])
+
+        setSeriesID1(details.data.results[0].id)
+        setSeriesID2(details.data.results[1].id)
+        setSeriesID3(details.data.results[2].id)
+        setSeriesID4(details.data.results[3].id)
     }
 
     useEffect(() => {
@@ -61,7 +72,7 @@ const SeriesCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${series1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series1.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/series/${series1.title}`} className="">View Series</Link></Button>
+                    <Button variant="success"><Link to={`/series/${series1.title}`} state={{seriesID: seriesID1}} className="">View Series {seriesID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -76,7 +87,7 @@ const SeriesCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${series2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series2.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/series/${series2.title}`} className="">View Series</Link></Button>
+                    <Button variant="success"><Link to={`/series/${series2.title}`} state={{seriesID: seriesID2}} className="">View Series {seriesID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -91,7 +102,7 @@ const SeriesCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${series3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series3.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/series/${series3.title}`} className="">View Series</Link></Button>
+                    <Button variant="success"><Link to={`/series/${series3.title}`} state={{seriesID: seriesID3}} className="">View Series {seriesID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -106,7 +117,7 @@ const SeriesCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${series4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series4.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/series/${series4.title}`} className="">View Series</Link></Button>
+                    <Button variant="success"><Link to={`/series/${series4.title}`} state={{seriesID: seriesID4}} className="">View Series {seriesID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }

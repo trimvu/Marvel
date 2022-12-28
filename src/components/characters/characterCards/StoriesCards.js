@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const StoriesCards = ({characterID}) => {
+const StoriesCards = ({characterID, image}) => {
 
   const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -19,21 +19,33 @@ const StoriesCards = ({characterID}) => {
   const [stories3, setStories3] = useState()
   const [stories4, setStories4] = useState()
 
+  const [storiesID1, setStoriesID1] = useState()
+  const [storiesID2, setStoriesID2] = useState()
+  const [storiesID3, setStoriesID3] = useState()
+  const [storiesID4, setStoriesID4] = useState()
+
   const dispatch = useDispatch();
   const items_stories = useSelector(state => state.stories.items_stories)
 
   const storiesDetail = async () => {
 
-    const url = `https://gateway.marvel.com:443/v1/public/characters/${characterID}/stories?apikey=${API_KEY}`
+    const url = `https://gateway.marvel.com:443/v1/public/characters/${characterID}/stories?apikey=${API_KEY}&limit=4&offset=${items_stories}`
     
     const data = await fetch(url)
     
     const details = await data.json();
 
-    setStories1(details.data.results[items_stories])
-    setStories2(details.data.results[items_stories+1])
-    setStories3(details.data.results[items_stories+2])
-    setStories4(details.data.results[items_stories+3])
+    console.log("stories cards details: ", details)
+
+    setStories1(details.data.results[0])
+    setStories2(details.data.results[1])
+    setStories3(details.data.results[2])
+    setStories4(details.data.results[3])
+
+    setStoriesID1(details.data.results[0].id)
+    setStoriesID2(details.data.results[1].id)
+    setStoriesID3(details.data.results[2].id)
+    setStoriesID4(details.data.results[3].id)
 
   }
 
@@ -58,10 +70,10 @@ const StoriesCards = ({characterID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  {/* <Card.Img variant="top" src={`${image}.jpg`} /> */}
+                  <Card.Img variant="top" src={`${image}.jpg`} />
                   <Card.Body>
                     <Card.Title>{stories1.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/stories/${stories1.title}`} className="">View stories</Link></Button>
+                    <Button variant="secondary"><Link to={`/stories/${stories1.title}`} state={{storiesID: storiesID1}} className="">View stories {storiesID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -73,10 +85,10 @@ const StoriesCards = ({characterID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  {/* <Card.Img variant="top" src={`${image}.jpg`} /> */}
+                  <Card.Img variant="top" src={`${image}.jpg`} />
                   <Card.Body>
                     <Card.Title>{stories2.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/stories/${stories2.title}`} className="">View stories</Link></Button>
+                    <Button variant="secondary"><Link to={`/stories/${stories2.title}`} state={{storiesID: storiesID2}} className="">View stories {storiesID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -88,10 +100,10 @@ const StoriesCards = ({characterID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  {/* <Card.Img variant="top" src={`${image}.jpg`} /> */}
+                  <Card.Img variant="top" src={`${image}.jpg`} />
                   <Card.Body>
                     <Card.Title>{stories3.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/stories/${stories3.title}`} className="">View stories</Link></Button>
+                    <Button variant="secondary"><Link to={`/stories/${stories3.title}`} state={{storiesID: storiesID3}} className="">View stories {storiesID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -103,10 +115,10 @@ const StoriesCards = ({characterID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  {/* <Card.Img variant="top" src={`${image}.jpg`} /> */}
+                  <Card.Img variant="top" src={`${image}.jpg`} />
                   <Card.Body>
                     <Card.Title>{stories4.title}</Card.Title>
-                    <Button variant="primary"><Link to={`/stories/${stories4.title}`} className="">View stories</Link></Button>
+                    <Button variant="secondary"><Link to={`/stories/${stories4.title}`} state={{storiesID: storiesID4}} className="">View stories {storiesID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }

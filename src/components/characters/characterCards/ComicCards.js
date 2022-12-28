@@ -31,23 +31,23 @@ const ComicCards = ({characterID}) => {
 
   const comicDetail = async () => {
 
-    const url = `https://gateway.marvel.com:443/v1/public/characters/${characterID}/comics?apikey=${API_KEY}`
+    const url = `https://gateway.marvel.com:443/v1/public/characters/${characterID}/comics?apikey=${API_KEY}&limit=4&offset=${items_comic}`
     
     const data = await fetch(url)
     
     const details = await data.json();
 
-    console.log("comic cards details: ", details)
+    // console.log("comic cards details: ", details)
 
-    setComic1(details.data.results[items_comic])
-    setComic2(details.data.results[items_comic+1])
-    setComic3(details.data.results[items_comic+2])
-    setComic4(details.data.results[items_comic+3])
+    setComic1(details.data.results[0])
+    setComic2(details.data.results[1])
+    setComic3(details.data.results[2])
+    setComic4(details.data.results[3])
 
-    setComicID1(details.data.results[items_comic].id)
-    setComicID2(details.data.results[items_comic+1].id)
-    setComicID3(details.data.results[items_comic+2].id)
-    setComicID4(details.data.results[items_comic+3].id)
+    setComicID1(details.data.results[0].id)
+    setComicID2(details.data.results[1].id)
+    setComicID3(details.data.results[2].id)
+    setComicID4(details.data.results[3].id)
 
   }
 
@@ -55,7 +55,7 @@ const ComicCards = ({characterID}) => {
 
       comicDetail();
 
-  }, [items_comic, characterID, comicID1])
+  }, [items_comic, characterID])
 
   return (
     <>
