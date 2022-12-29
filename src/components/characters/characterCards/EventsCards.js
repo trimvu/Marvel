@@ -57,11 +57,9 @@ const EventsCards = ({characterID}) => {
 
   return (
     <>
-        EventsCards
-
-        <h2>Events: {items_events}</h2>
-
         <Container>
+          <Row className='text-white bg-danger text-center'><h2>Events: </h2></Row>
+          <br />
           <Row>
             <Col>
               {
@@ -73,7 +71,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events1.title}</Card.Title>
-                    <Button variant="warning"><Link to={`/events/${events1.title}`} state={{eventsID: eventsID1}} className="">View events {eventsID1}</Link></Button>
+                    <Button variant="danger"><Link to={`/events/${events1.title}`} state={{eventsID: eventsID1}} className="">View events {eventsID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -88,7 +86,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events2.title}</Card.Title>
-                    <Button variant="warning"><Link to={`/events/${events2.title}`} state={{eventsID: eventsID2}} className="">View events {eventsID2}</Link></Button>
+                    <Button variant="danger"><Link to={`/events/${events2.title}`} state={{eventsID: eventsID2}} className="">View events {eventsID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -103,7 +101,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events3.title}</Card.Title>
-                    <Button variant="warning"><Link to={`/events/${events3.title}`} state={{eventsID: eventsID3}} className="">View events {eventsID3}</Link></Button>
+                    <Button variant="danger"><Link to={`/events/${events3.title}`} state={{eventsID: eventsID3}} className="">View events {eventsID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -118,15 +116,20 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events4.title}</Card.Title>
-                    <Button variant="warning"><Link to={`/events/${events4.title}`} state={{eventsID: eventsID4}} className="">View events {eventsID4}</Link></Button>
+                    <Button variant="danger"><Link to={`/events/${events4.title}`} state={{eventsID: eventsID4}} className="">View events {eventsID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }
             </Col>
           </Row>
+          <br />
+          <Row>
+            <Col md={{offset: 5 }}>
+              <Button variant='danger' onClick={() => dispatch(allActions.decrementEventsAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <Button variant='danger' onClick={() => dispatch(allActions.incrementEventsAction(4))} >More</Button>
+            </Col>
+          </Row>
         </Container>
-        <button onClick={() => dispatch(allActions.decrementEventsAction(4))} >Back</button>
-        <button onClick={() => dispatch(allActions.incrementEventsAction(4))} >More</button>
     </>
   )
 }

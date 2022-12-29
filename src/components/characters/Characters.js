@@ -8,6 +8,10 @@ import EventsCards from './characterCards/EventsCards'
 import SeriesCards from './characterCards/SeriesCards'
 import StoriesCards from './characterCards/StoriesCards'
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+
 const Characters = () => {
   
   const API_KEY = process.env.REACT_APP_API_KEY
@@ -51,7 +55,8 @@ const Characters = () => {
 
   return (
     <>
-        <h1>Character Info: {character}</h1>
+      <Container className='text-center bg-danger text-white'>
+        <h1>CHARACTER INFO: </h1>
 
         {
           characterInfo === undefined
@@ -59,27 +64,24 @@ const Characters = () => {
           ''
           :
           <div>
+            <Row>
             <h1>{characterInfo.name}</h1>
             <p>{characterInfo.description}</p>
-            <h2>Image</h2>
             <img src={`${image}.jpg`} ></img>
+            </Row>
           </div>
         }
 
+      </Container>
+
         <br /><br />
 
-        {availableSeries} 
-
-        //! COMIC
         <ComicCards characterID={characterID} />
-
-        //! EVENTS
+        <br />
         <EventsCards characterID={characterID} />
-
-        //! SERIES
+        <br />
         <SeriesCards characterID={characterID} />
-
-        //! STORIES
+        <br />
         <StoriesCards characterID={characterID} image={image}/>
 
         <div>
