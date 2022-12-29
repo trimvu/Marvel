@@ -56,11 +56,10 @@ const SeriesCards = ({characterID}) => {
 
   return (
     <>
-        SeriesCards
-
-        <h2>Series: {items_series}</h2>
 
         <Container>
+          <Row className='text-white bg-danger text-center'><h2>Series: </h2></Row>
+          <br />
           <Row>
             <Col>
               {
@@ -72,7 +71,7 @@ const SeriesCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${series1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series1.title}</Card.Title>
-                    <Button variant="success"><Link to={`/series/${series1.title}`} state={{seriesID: seriesID1}} className="">View Series {seriesID1}</Link></Button>
+                    <Button variant="danger"><Link to={`/series/${series1.title}`} state={{seriesID: seriesID1}} className="">View Series {seriesID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -87,7 +86,7 @@ const SeriesCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${series2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series2.title}</Card.Title>
-                    <Button variant="success"><Link to={`/series/${series2.title}`} state={{seriesID: seriesID2}} className="">View Series {seriesID2}</Link></Button>
+                    <Button variant="danger"><Link to={`/series/${series2.title}`} state={{seriesID: seriesID2}} className="">View Series {seriesID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -102,7 +101,7 @@ const SeriesCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${series3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series3.title}</Card.Title>
-                    <Button variant="success"><Link to={`/series/${series3.title}`} state={{seriesID: seriesID3}} className="">View Series {seriesID3}</Link></Button>
+                    <Button variant="danger"><Link to={`/series/${series3.title}`} state={{seriesID: seriesID3}} className="">View Series {seriesID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -117,15 +116,20 @@ const SeriesCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${series4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series4.title}</Card.Title>
-                    <Button variant="success"><Link to={`/series/${series4.title}`} state={{seriesID: seriesID4}} className="">View Series {seriesID4}</Link></Button>
+                    <Button variant="danger"><Link to={`/series/${series4.title}`} state={{seriesID: seriesID4}} className="">View Series {seriesID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }
             </Col>
           </Row>
+          <br />
+          <Row>
+            <Col md={{offset: 5 }}>
+              <Button variant='danger' onClick={() => dispatch(allActions.decrementSeriesAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <Button variant='danger' onClick={() => dispatch(allActions.incrementSeriesAction(4))} >More</Button>
+            </Col>
+          </Row>
         </Container>
-        <button onClick={() => dispatch(allActions.decrementSeriesAction(4))} >Back</button>
-        <button onClick={() => dispatch(allActions.incrementSeriesAction(4))} >More</button>
     </>
   )
 }

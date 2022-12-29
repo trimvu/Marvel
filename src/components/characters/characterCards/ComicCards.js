@@ -59,11 +59,9 @@ const ComicCards = ({characterID}) => {
 
   return (
     <>
-        ComicCards
-
-        <h2>Comic: {items_comic}</h2>
-
         <Container>
+          <Row className='text-white bg-danger text-center'><h2>Comic: </h2></Row>
+          <br />
           <Row>
             <Col>
               {
@@ -126,9 +124,14 @@ const ComicCards = ({characterID}) => {
               }
             </Col>
           </Row>
+          <br />
+          <Row>
+            <Col md={{offset: 5 }}>
+              <Button variant='danger' onClick={() => dispatch(allActions.decrementComicAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <Button variant='danger' onClick={() => dispatch(allActions.incrementComicAction(4))} >More</Button>
+            </Col>
+          </Row>
         </Container>
-        <button onClick={() => dispatch(allActions.decrementComicAction(4))} >Back</button>
-        <button onClick={() => dispatch(allActions.incrementComicAction(4))} >More</button>
     </>
   )
 }
