@@ -14,7 +14,7 @@ const CharactersResults = () => {
 
     const characterListFetch = async () => {
 
-        const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&orderBy=name&apikey=${API_KEY}`)
+        const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&orderBy=name&apikey=${API_KEY}&limit=99`)
 
         const details = await data.json();
 

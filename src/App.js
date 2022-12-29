@@ -7,31 +7,32 @@ const App = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
 
   const [searchInput, setSearchInput] = useState("");
+  const [optionValue, setOptionValue] = useState("")
 
   const navigate = useNavigate();
 
-  const fetchInput = async () => {
-    // let url = `https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&orderBy=name&apikey=${API_KEY}`
+  // const fetchInput = async () => {
+  //   // let url = `https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&orderBy=name&apikey=${API_KEY}`
 
-    let url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchInput}&orderBy=name&apikey=${API_KEY}`
+  //   let url = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchInput}&orderBy=name&apikey=${API_KEY}`
 
-    let results = await fetch(url);
+  //   let results = await fetch(url);
 
-    let data = await results.json();
+  //   let data = await results.json();
     
-    // console.log("the data:", data)
+  //   // console.log("the data:", data)
 
-    setSearchInput(data.Search)
+  //   setSearchInput(data.Search)
 
-  }
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // setSubmittedSearchInput(searchInput)
-    fetchInput(searchInput)
+    // fetchInput(searchInput)
     console.log(searchInput)
 
-    navigate(`/characters-results/${searchInput}`)
+    navigate(`/${optionValue}-results/${searchInput}`)
 
   }
 
@@ -41,8 +42,9 @@ const App = () => {
       <div>
           
           <form onSubmit={handleSubmit}>
-            <select className='options'>
-              <option value="grapefruit">Character</option>
+            <select className='options' onChange={(e) => setOptionValue(e.target.value)}>
+              <option selected="true" disabled="disabled">Choose Category</option>
+              <option value="characters">Character</option>
               <option value="comic">Comic</option>
               <option value="events">Events</option>
               <option value="series">Series</option>
