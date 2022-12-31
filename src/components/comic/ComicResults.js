@@ -45,7 +45,6 @@ const ComicResults = () => {
                       </li>
                   </ul>
               )
-
           })
       }
     </>
