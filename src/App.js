@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const App = () => {
 
-  const API_KEY = process.env.REACT_APP_API_KEY
+  // const API_KEY = process.env.REACT_APP_API_KEY
 
   const [searchInput, setSearchInput] = useState("");
   const [optionValue, setOptionValue] = useState("")
@@ -46,6 +46,7 @@ const App = () => {
               <option selected="true" disabled="disabled">Choose Category</option>
               <option value="characters">Character</option>
               <option value="comic">Comic</option>
+              <option value="creators">Creators</option>
               <option value="events">Events</option>
               <option value="series">Series</option>
               <option value="stories">Stories</option>

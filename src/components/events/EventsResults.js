@@ -39,7 +39,7 @@ const EventsResults = () => {
                 <li>
                   <Link to={`/events/${info.title}`} className="">{info.title}</Link>
                   <br />
-                  <img src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
+                  <img alt='Event' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
                 </li>
               </ul>
             )
