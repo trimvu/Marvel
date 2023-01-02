@@ -41,7 +41,7 @@ const CharactersResults = () => {
                         <li>
                             <Link to={`/character/${info.name}`} className="">{info.name}</Link>
                             <br />
-                            <img src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
+                            <img alt='Character' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
                         </li>
                     </ul>
                 )

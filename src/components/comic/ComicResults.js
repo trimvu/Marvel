@@ -41,7 +41,7 @@ const ComicResults = () => {
                       <li>
                           <Link to={`/comic/${info.title}`} className="">{info.title}</Link>
                           <br />
-                          <img src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
+                          <img alt='Comic' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
                       </li>
                   </ul>
               )
