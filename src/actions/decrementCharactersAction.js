@@ -1,5 +1,5 @@
 
-const decrementCharacterssAction = (num) => {
+const decrementCharactersAction = (num) => {
 
     return {
         type: "DECREMENT_CHARACTERS_ITEMS",
@@ -8,4 +8,4 @@ const decrementCharacterssAction = (num) => {
 
 }
 
-export default decrementCharacterssAction;
+export default decrementCharactersAction;
