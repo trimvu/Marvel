@@ -49,7 +49,6 @@ const App = () => {
               <option value="creators">Creators</option>
               <option value="events">Events</option>
               <option value="series">Series</option>
-              <option value="stories">Stories</option>
             </select>
               <input type="text" className='search-bar' value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} />
               <input type="submit" className='search-bar'/>

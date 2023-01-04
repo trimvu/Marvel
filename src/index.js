@@ -15,8 +15,6 @@ import Events from './components/events/Events';
 import EventsResults from './components/events/EventsResults';
 import Series from './components/series/Series';
 import SeriesResults from './components/series/SeriesResults';
-import Stories from './components/stories/Stories';
-import StoriesResults from './components/stories/StoriesResults';
 
 import {Provider} from 'react-redux';
 import {createStore} from 'redux'
@@ -47,8 +45,6 @@ root.render(
           <Route path='/events/:events' element={<Events /> } />
           <Route path='/series-results/:search' element={<SeriesResults /> } />
           <Route path='/series/:series' element={<Series /> } />
-          <Route path='/stories-results/:search' element={<StoriesResults /> } />
-          <Route path='/stories/:stories' element={<Stories /> } />
         </Routes>
       </BaseLayout>
     </Router>
