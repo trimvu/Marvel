@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux'
 import '../style/Characters.css'
 
 // import CharactersCards from './comicCards/CharactersCards'
+// import CreatorsCards from './comicCards/CreatorsCards'
 // import EventsCards from './comicCards/EventsCards'
 // import SeriesCards from './comicCards/SeriesCards'
-// import StoriesCards from './comicCards/StoriesCards'
 
 const Comic = (props) => {
 

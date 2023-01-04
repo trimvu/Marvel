@@ -6,7 +6,6 @@ import '../style/Characters.css'
 import ComicCards from './characterCards/ComicCards'
 import EventsCards from './characterCards/EventsCards'
 import SeriesCards from './characterCards/SeriesCards'
-import StoriesCards from './characterCards/StoriesCards'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -81,8 +80,6 @@ const Characters = () => {
         <EventsCards characterID={characterID} />
         <br />
         <SeriesCards characterID={characterID} />
-        <br />
-        <StoriesCards characterID={characterID} image={image}/>
 
         <div>
           <h2>

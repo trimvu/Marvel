@@ -12,11 +12,11 @@ const CreatorsResults = () => {
 
   const creatorsListFetch = async () => {
 
-    const data = await fetch(`https://gateway.marvel.com:443/v1/public/creators?nameStartsWith=${search}&apikey=${API_KEY}&list=99`)
+    const data = await fetch(`https://gateway.marvel.com:443/v1/public/creators?nameStartsWith=${search}&apikey=${API_KEY}&limit=99`)
 
     const details = await data.json();
 
-    console.log(details.data)
+    console.log("creator details: ", details)
 
     setCreatorsList(details.data.results)
 

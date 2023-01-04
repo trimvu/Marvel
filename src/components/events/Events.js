@@ -5,8 +5,8 @@ import '../style/Characters.css'
 
 // import CharactersCards from './eventsCards/CharactersCards'
 // import ComicCards from './eventsCards/ComicCards'
+// import CreatorsCards from './eventsCards/CreatorsCards'
 // import SeriesCards from './eventsCards/SeriesCards'
-// import StoriesCards from './eventsCards/StoriesCards'
 
 const Events = (props) => {
 
