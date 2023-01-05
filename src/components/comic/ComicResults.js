@@ -18,7 +18,7 @@ const ComicResults = () => {
 
       const details = await data.json();
 
-      console.log(details.data)
+      console.log("comic results: ", details.data)
 
       setComicList(details.data.results)
 
@@ -39,7 +39,7 @@ const ComicResults = () => {
               return (
                   <ul key={info.id}>
                       <li>
-                          <Link to={`/comic/${info.title}`} className="">{info.title}</Link>
+                          <Link to={`/comic/${info.title}`} state={{comicID: info.id}} className="">{info.title} {info.id}</Link>
                           <br />
                           <img alt='Comic' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
                       </li>

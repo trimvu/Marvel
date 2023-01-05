@@ -37,7 +37,7 @@ const SeriesResults = () => {
             return (
               <ul key={info.id}>
                 <li>
-                  <Link to={`/events/${info.title}`} className="">{info.title}</Link>
+                  <Link to={`/series/${info.title}`} state={{seriesID: info.id}} className="">{info.title} {info.id}</Link>
                   <br />
                   <img alt='serie' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
                 </li>
