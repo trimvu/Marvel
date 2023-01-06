@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import '../style/Characters.css'
-
 // import CharactersCards from './comicCards/CharactersCards'
 // import CreatorsCards from './comicCards/CreatorsCards'
-// import EventsCards from './comicCards/EventsCards'
+
+import CharactersCards from './comicCards/CharactersCards'
+import CreatorsCards from './comicCards/CreatorsCards'
+import EventsCards from './comicCards/EventsCards'
 // import SeriesCards from './comicCards/SeriesCards'
 
 const Comic = (props) => {
@@ -19,6 +21,8 @@ const Comic = (props) => {
   const [comicInfo, setComicInfo] = useState([])
   const [image, setImage] = useState()
   const [price, setPrice] = useState()
+
+  const [comicID, setComicID] = useState()
 
   const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -35,7 +39,11 @@ const Comic = (props) => {
     setComicInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
     setPrice(details.data.results[0].prices[0].price)
+
+    setComicID(details.data.results[0].id)
   }
+
+  console.log("comic ID: ", comicID)
 
   useEffect(() => {
 
@@ -64,6 +72,12 @@ const Comic = (props) => {
             <img src={`${image}.jpg`} ></img>
         </div>
       }
+
+      <CharactersCards comicID={comicID} />
+      <br />
+      <CreatorsCards comicID={comicID} />
+      <br />
+      <EventsCards comicID={comicID} />
     </>
   )
 }
