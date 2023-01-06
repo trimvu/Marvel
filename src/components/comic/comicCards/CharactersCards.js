@@ -127,8 +127,8 @@ const CharactersCards = ({comicID}) => {
           <br />
           <Row>
             <Col md={{offset: 5 }}>
-              <Button variant='danger' onClick={() => dispatch(allActions.decrementCharacterAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Button variant='danger' onClick={() => dispatch(allActions.incrementCharacterAction(4))} >More</Button>
+              <Button variant='danger' onClick={() => dispatch(allActions.decrementCharactersAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <Button variant='danger' onClick={() => dispatch(allActions.incrementCharactersAction(4))} >More</Button>
             </Col>
           </Row>
         </Container>

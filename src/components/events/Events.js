@@ -3,10 +3,10 @@ import { useParams, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import '../style/Characters.css'
 
-// import CharactersCards from './eventsCards/CharactersCards'
-// import ComicCards from './eventsCards/ComicCards'
-// import CreatorsCards from './eventsCards/CreatorsCards'
-// import SeriesCards from './eventsCards/SeriesCards'
+import CharactersCards from './eventsCards/CharactersCards'
+import ComicCards from './eventsCards/ComicCards'
+import CreatorsCards from './eventsCards/CreatorsCards'
+import SeriesCards from './eventsCards/SeriesCards'
 
 const Events = (props) => {
 
@@ -19,6 +19,8 @@ const Events = (props) => {
   const [eventsInfo, setEventsInfo] = useState([])
   const [image, setImage] = useState()
   const [description, setDescription] = useState()
+
+  const [eventsID, setEventsID] = useState()
 
   const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -35,6 +37,8 @@ const Events = (props) => {
     setEventsInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
     setDescription(details.data.results[0].description)
+
+    setEventsID(details.data.results[0].id)
 
   }
 
@@ -61,6 +65,15 @@ const Events = (props) => {
           </div>
 
         }
+
+        <CharactersCards eventsID={eventsID} />
+        <br />
+        <ComicCards eventsID={eventsID} />
+        <br />
+        <CreatorsCards eventsID={eventsID} />
+        <br />
+        <SeriesCards eventsID={eventsID} />
+
     </>
   )
 }
