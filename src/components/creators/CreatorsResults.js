@@ -37,7 +37,7 @@ const CreatorsResults = () => {
               return (
                   <ul key={info.id}>
                       <li>
-                          <Link to={`/creators/${info.fullName}`} className="">{info.fullName}</Link>
+                          <Link to={`/creators/${info.fullName}`} state={{creatorsID: info.id}} className="">{info.fullName} {info.id}</Link>
                           <br />
                           <img alt='Creator' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
                       </li>
