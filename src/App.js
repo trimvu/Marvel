@@ -30,7 +30,7 @@ const App = () => {
     e.preventDefault();
     // setSubmittedSearchInput(searchInput)
     // fetchInput(searchInput)
-    console.log(searchInput)
+    // console.log(searchInput)
 
     navigate(`/${optionValue}-results/${searchInput}`)
 
@@ -43,14 +43,14 @@ const App = () => {
           
           <form onSubmit={handleSubmit}>
             <select className='options' onChange={(e) => setOptionValue(e.target.value)}>
-              <option selected="true" disabled="disabled">Choose Category</option>
+              <option disabled selected hidden>Choose Category</option>
               <option value="characters">Character</option>
               <option value="comic">Comic</option>
               <option value="creators">Creators</option>
               <option value="events">Events</option>
               <option value="series">Series</option>
             </select>
-              <input type="text" className='search-bar' value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} />
+              <input type="text" className='search-bar' value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} required/>
               <input type="submit" className='search-bar'/>
           </form>
           

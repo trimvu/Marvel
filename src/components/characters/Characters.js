@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { useDispatch, useSelector} from 'react-redux'
+import { useParams } from 'react-router-dom'
+// import { useDispatch } from 'react-redux'
 import '../style/Characters.css'
 
 import ComicCards from './characterCards/ComicCards'
@@ -8,7 +8,7 @@ import EventsCards from './characterCards/EventsCards'
 import SeriesCards from './characterCards/SeriesCards'
 
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 
 const Characters = () => {
@@ -16,15 +16,15 @@ const Characters = () => {
   const API_KEY = process.env.REACT_APP_API_KEY
 
   const [characterInfo, setCharacterInfo] = useState()
-  const [availableSeries, setAvailableSeries] = useState()
+  // const [availableSeries, setAvailableSeries] = useState()
   const [image, setImage] = useState()
-  const [description, setDescription] = useState()
+  // const [description, setDescription] = useState()
 
   const [characterID, setCharacterID] = useState()
 
   const [additionalInfo, setAdditionalInfo] = useState()
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
   let {character} = useParams()
 
@@ -35,8 +35,8 @@ const Characters = () => {
     const details = await data.json(); 
 
     setCharacterInfo(details.data.results[0]);
-    setAvailableSeries(details.data.results[0].series.available)
-    setDescription(details.description)
+    // setAvailableSeries(details.data.results[0].series.available)
+    // setDescription(details.description)
     setImage(details.data.results[0].thumbnail.path)
     setCharacterID(details.data.results[0].id)
     
@@ -44,7 +44,7 @@ const Characters = () => {
 
   }
 
-  console.log("characterID", characterID)
+  // console.log("characterID", characterID)
 
   useEffect(() => {
 
@@ -64,9 +64,9 @@ const Characters = () => {
           :
           <div>
             <Row>
-            <h1>{characterInfo.name}</h1>
-            <p>{characterInfo.description}</p>
-            <img src={`${image}.jpg`} ></img>
+              <h1>{characterInfo.name}</h1>
+              <p>{characterInfo.description}</p>
+              <img alt='character' src={`${image}.jpg`} ></img>
             </Row>
           </div>
         }
@@ -83,7 +83,7 @@ const Characters = () => {
 
         <div>
           <h2>
-            <a href={additionalInfo} target="_blank">
+            <a href={additionalInfo} target="_blank" rel='noreferrer'>
               Additional Information
             </a>
           </h2>

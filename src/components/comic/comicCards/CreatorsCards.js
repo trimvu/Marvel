@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
 import allActions from '../../../actions/index';
@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 
 const CreatorsCards = ({comicID}) => {
 
-  console.log("comic ID is: ", comicID)
+  // console.log("comic ID is: ", comicID)
 
   const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -37,7 +37,7 @@ const CreatorsCards = ({comicID}) => {
 
     const details = await data.json();
 
-    console.log("creators card details: ", details)
+    // console.log("creators card details: ", details)
 
     setCreators1(details.data.results[0])
     setCreators2(details.data.results[1])
@@ -73,7 +73,7 @@ const CreatorsCards = ({comicID}) => {
                   <Card.Img variant="top" src={`${creators1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{creators1.fullName}</Card.Title>
-                    <Button variant="danger"><Link to={`/creators/${creators1.fullName}`} state={{creatorsID: creatorsID1}} className="">View creators {creatorsID1}</Link></Button>
+                    <Button variant="danger"><Link to={`/creators/${creators1.fullName}`} state={{creatorsID: creatorsID1}} className="white">View creators {creatorsID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -88,7 +88,7 @@ const CreatorsCards = ({comicID}) => {
                   <Card.Img variant="top" src={`${creators2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{creators2.fullName}</Card.Title>
-                    <Button variant="danger"><Link to={`/creators/${creators2.fullName}`} state={{creatorsID: creatorsID2}} className="">View creators {creatorsID2}</Link></Button>
+                    <Button variant="danger"><Link to={`/creators/${creators2.fullName}`} state={{creatorsID: creatorsID2}} className="white">View creators {creatorsID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -103,7 +103,7 @@ const CreatorsCards = ({comicID}) => {
                   <Card.Img variant="top" src={`${creators3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{creators3.fullName}</Card.Title>
-                    <Button variant="danger"><Link to={`/creators/${creators3.fullName}`} state={{creatorsID: creatorsID3}} className="">View creators {creatorsID3}</Link></Button>
+                    <Button variant="danger"><Link to={`/creators/${creators3.fullName}`} state={{creatorsID: creatorsID3}} className="white">View creators {creatorsID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -118,7 +118,7 @@ const CreatorsCards = ({comicID}) => {
                   <Card.Img variant="top" src={`${creators4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{creators4.fullName}</Card.Title>
-                    <Button variant="danger"><Link to={`/creators/${creators4.fullName}`} state={{creatorsID: creatorsID4}} className="">View creators {creatorsID4}</Link></Button>
+                    <Button variant="danger"><Link to={`/creators/${creators4.fullName}`} state={{creatorsID: creatorsID4}} className="white">View creators {creatorsID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }

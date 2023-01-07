@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
 import allActions from '../../../actions/index';
@@ -58,7 +58,7 @@ const EventsCards = ({characterID}) => {
   return (
     <>
         <Container>
-          <Row className='text-white bg-danger text-center'><h2>Events: </h2></Row>
+          <Row className='text-white bg-danger text-center'><h2>Event(s): </h2></Row>
           <br />
           <Row>
             <Col>
@@ -71,7 +71,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events1.title}</Card.Title>
-                    <Button variant="danger"><Link to={`/events/${events1.title}`} state={{eventsID: eventsID1}} className="">View events {eventsID1}</Link></Button>
+                    <Button variant="danger"><Link to={`/events/${events1.title}`} state={{eventsID: eventsID1}} className="white">View events {eventsID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -86,7 +86,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events2.title}</Card.Title>
-                    <Button variant="danger"><Link to={`/events/${events2.title}`} state={{eventsID: eventsID2}} className="">View events {eventsID2}</Link></Button>
+                    <Button variant="danger"><Link to={`/events/${events2.title}`} state={{eventsID: eventsID2}} className="white">View events {eventsID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -101,7 +101,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events3.title}</Card.Title>
-                    <Button variant="danger"><Link to={`/events/${events3.title}`} state={{eventsID: eventsID3}} className="">View events {eventsID3}</Link></Button>
+                    <Button variant="danger"><Link to={`/events/${events3.title}`} state={{eventsID: eventsID3}} className="white">View events {eventsID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -116,7 +116,7 @@ const EventsCards = ({characterID}) => {
                   <Card.Img variant="top" src={`${events4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{events4.title}</Card.Title>
-                    <Button variant="danger"><Link to={`/events/${events4.title}`} state={{eventsID: eventsID4}} className="">View events {eventsID4}</Link></Button>
+                    <Button variant="danger"><Link to={`/events/${events4.title}`} state={{eventsID: eventsID4}} className="white">View events {eventsID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }

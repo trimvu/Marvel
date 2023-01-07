@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
 import allActions from '../../../actions/index';
@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 
 const CharactersCards = ({eventsID}) => {
 
-  console.log("events ID is: ", eventsID)
+  // console.log("events ID is: ", eventsID)
 
   const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -37,7 +37,7 @@ const CharactersCards = ({eventsID}) => {
 
     const details = await data.json();
 
-    console.log("characters card details: ", details)
+    // console.log("characters card details: ", details)
 
     setCharacter1(details.data.results[0])
     setCharacter2(details.data.results[1])
@@ -73,7 +73,7 @@ const CharactersCards = ({eventsID}) => {
                   <Card.Img variant="top" src={`${character1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{character1.name}</Card.Title>
-                    <Button variant="danger"><Link to={`/character/${character1.name}`} state={{characterID: characterID1}} className="">View character {characterID1}</Link></Button>
+                    <Button variant="danger"><Link to={`/character/${character1.name}`} state={{characterID: characterID1}} className="white">View character {characterID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -88,7 +88,7 @@ const CharactersCards = ({eventsID}) => {
                   <Card.Img variant="top" src={`${character2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{character2.name}</Card.Title>
-                    <Button variant="danger"><Link to={`/character/${character2.name}`} state={{characterID: characterID2}} className="">View character {characterID2}</Link></Button>
+                    <Button variant="danger"><Link to={`/character/${character2.name}`} state={{characterID: characterID2}} className="white">View character {characterID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -103,7 +103,7 @@ const CharactersCards = ({eventsID}) => {
                   <Card.Img variant="top" src={`${character3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{character3.name}</Card.Title>
-                    <Button variant="danger"><Link to={`/character/${character3.name}`} state={{characterID: characterID3}} className="">View character {characterID3}</Link></Button>
+                    <Button variant="danger"><Link to={`/character/${character3.name}`} state={{characterID: characterID3}} className="white">View character {characterID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -118,7 +118,7 @@ const CharactersCards = ({eventsID}) => {
                   <Card.Img variant="top" src={`${character4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{character4.name}</Card.Title>
-                    <Button variant="danger"><Link to={`/character/${character4.name}`} state={{characterID: characterID4}} className="">View character {characterID4}</Link></Button>
+                    <Button variant="danger"><Link to={`/character/${character4.name}`} state={{characterID: characterID4}} className="white">View character {characterID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }

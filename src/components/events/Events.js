@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import '../style/Characters.css'
 
 import CharactersCards from './eventsCards/CharactersCards'
@@ -8,13 +7,16 @@ import ComicCards from './eventsCards/ComicCards'
 import CreatorsCards from './eventsCards/CreatorsCards'
 import SeriesCards from './eventsCards/SeriesCards'
 
+import Row from 'react-bootstrap/ROW';
+import Container from 'react-bootstrap/Container';
+
 const Events = (props) => {
 
   const location = useLocation();
 
-  console.log("props: ", props)
+  // console.log("props: ", props)
 
-  console.log("location: ", location)
+  // console.log("location: ", location)
 
   const [eventsInfo, setEventsInfo] = useState([])
   const [image, setImage] = useState()
@@ -32,7 +34,7 @@ const Events = (props) => {
 
     const details = await data.json();
 
-    console.log("events details: ", details)
+    // console.log("events details: ", details)
 
     setEventsInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
@@ -50,21 +52,31 @@ const Events = (props) => {
 
   return (
     <>
-        <h1>Events: {events}</h1>
-        <h2>EventsID: {location.state.eventsID}</h2>
+        {/* <h1>Events: {events}</h1> */}
+        {/* <h2>EventsID: {location.state.eventsID}</h2> */}
 
-        {
-          eventsInfo === undefined
-          ?
-          ''
-          :
-          <div>
-            <h1>{eventsInfo.title}</h1>
-            <p>{description}</p>
-            <img src={`${image}.jpg`} ></img>
-          </div>
+        <Container className='text-center bg-danger text-white'>
 
-        }
+          <h1>EVENT INFO: </h1>
+
+          {
+            eventsInfo === undefined
+            ?
+            ''
+            :
+            <div>
+              <Row>
+                <h1>{eventsInfo.title}</h1>
+                <p>{description}</p>
+                <img alt='event' src={`${image}.jpg`} ></img>
+              </Row>
+            </div>
+
+          }
+
+        </Container>
+
+        <br /><br />
 
         <CharactersCards eventsID={eventsID} />
         <br />

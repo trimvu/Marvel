@@ -26,3 +26,12 @@ code {
   margin: auto;
   display: block;
 }
+
+.white {
+  text-decoration: none;
+  color: white;
+}
+
+.white:hover {
+  color: white;
+}

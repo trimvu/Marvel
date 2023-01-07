@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import '../style/Characters.css'
 
-// import CharactersCards from './seriesCards/CharactersCards'
-// import ComicCards from './seriesCards/ComicCards'
-// import CreatorsCards from './seriesCards/CreatorsCards'
-// import EventsCards from './seriesCards/EventsCards'
+import CharactersCards from './seriesCards/CharactersCards'
+import ComicCards from './seriesCards/ComicCards'
+import CreatorsCards from './seriesCards/CreatorsCards'
+import EventsCards from './seriesCards/EventsCards'
+
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
 const Series = (props) => {
 
@@ -20,6 +22,8 @@ const Series = (props) => {
   const [image, setImage] = useState()
   const [rating, setRating] = useState()
 
+  const [seriesID, setSeriesID] = useState()
+
   const API_KEY = process.env.REACT_APP_API_KEY
 
   let {series} = useParams()
@@ -30,11 +34,14 @@ const Series = (props) => {
 
     const details = await data.json()
 
-    console.log("series details:", details)
+    // console.log("series details:", details)
 
     setSeriesInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
     setRating(details.data.results[0].rating)
+
+    setSeriesID(details.data.results[0].id)
+    
   }
 
   useEffect(()=> {
@@ -45,21 +52,39 @@ const Series = (props) => {
   
   return (
     <>
-        <h1>Series: {series}</h1>
-        <h2>{location.state.seriesID}</h2>
+        {/* <h1>Series: {series}</h1>
+        <h2>{location.state.seriesID}</h2> */}
 
-        {
-          seriesInfo === undefined
-          ?
-          ''
-          :
-          <div>
-            <h1>{seriesInfo.title}</h1>
-            <p>Rating: {rating}</p>
-            <h2>Image</h2>
-            <img src={`${image}.jpg`} ></img>
-          </div>
-        }
+        <Container className='text-center bg-danger text-white'>
+
+          <h1>SERIE INFO: </h1>
+
+          {
+            seriesInfo === undefined
+            ?
+            ''
+            :
+            <div>
+              <Row>
+                <h1>{seriesInfo.title}</h1>
+                <p>Rating: {rating}</p>
+                <h2>Image</h2>
+                <img alt='serie' src={`${image}.jpg`} ></img>
+              </Row>
+            </div>
+          }
+
+        </Container>
+
+        <br /><br />
+
+        <CharactersCards seriesID={seriesID} />
+        <br />
+        <ComicCards seriesID={seriesID} />
+        <br />
+        <CreatorsCards seriesID={seriesID} />
+        <br />
+        <EventsCards seriesID={seriesID} />
     </>
   )
 }

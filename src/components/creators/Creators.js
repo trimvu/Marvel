@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import '../style/Characters.css'
 
 import ComicCards from './creatorsCards/ComicCards'
@@ -11,13 +10,12 @@ const Creators = (props) => {
 
   const location = useLocation();
 
-  console.log("props: ", props)
+  // console.log("props: ", props)
 
-  console.log("location: ", location)
+  // console.log("location: ", location)
 
   const [creatorsInfo, setCreatorsInfo] = useState([])
   const [image, setImage] = useState()
-  // const [description, setDescription] = useState()
 
   const [creatorsID, setCreatorsID] = useState()
 
@@ -31,17 +29,16 @@ const Creators = (props) => {
 
     const details = await data.json();
 
-    console.log("creators details: ", details)
+    // console.log("creators details: ", details)
 
     setCreatorsInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
-    // setDescription(details.data.results[0].description)
 
     setCreatorsID(details.data.results[0].id)
 
   }
 
-  console.log("creators id: ", creatorsID)
+  // console.log("creators id: ", creatorsID)
 
   useEffect(() => {
 
@@ -62,7 +59,7 @@ const Creators = (props) => {
           <div>
             <h1>{creatorsInfo.fullName}</h1>
             {/* <p>{description}</p> */}
-            <img src={`${image}.jpg`} ></img>  
+            <img alt='creator' src={`${image}.jpg`} ></img>  
           </div>
 
         }
