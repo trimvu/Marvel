@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useParams, useLocation } from 'react-router-dom'
+// import { useDispatch } from 'react-redux'
 import '../style/Characters.css'
-// import CharactersCards from './comicCards/CharactersCards'
-// import CreatorsCards from './comicCards/CreatorsCards'
 
 import CharactersCards from './comicCards/CharactersCards'
 import CreatorsCards from './comicCards/CreatorsCards'
 import EventsCards from './comicCards/EventsCards'
-// import SeriesCards from './comicCards/SeriesCards'
+
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
 const Comic = (props) => {
 
@@ -43,7 +43,7 @@ const Comic = (props) => {
     setComicID(details.data.results[0].id)
   }
 
-  console.log("comic ID: ", comicID)
+  // console.log("comic ID: ", comicID)
 
   useEffect(() => {
 
@@ -53,25 +53,31 @@ const Comic = (props) => {
 
   return (
     <>
-        <h1>Comic: {comic}</h1>
-        {/* <h2>ComicID: {comicID1}</h2> */}
-        <h2>ComicID: {location.state.comicID}</h2>
-        {/* <h3>
-            {comicInfo.characters.items[1].name}
-        </h3> */}
+        {/* <h1>Comic: {comic}</h1> */}
+        {/* <h2>ComicID: {location.state.comicID}</h2> */}
 
-      {
-        comicInfo === undefined
-        ?
-        ''
-        :
-        <div>
-            <h1>{comicInfo.title}</h1>
-            <p>Price: ${price}</p>
-            <h2>Image</h2>
-            <img src={`${image}.jpg`} ></img>
-        </div>
-      }
+      <Container className='text-center bg-danger text-white'>
+      
+        <h1>COMIC INFO: </h1>
+        
+        {
+          comicInfo === undefined
+          ?
+          ''
+          :
+          <div>
+            <Row>
+              <h1>{comicInfo.title}</h1>
+              <p>Price: ${price}</p>
+              <h2>Image</h2>
+              <img alt='comic' src={`${image}.jpg`} ></img>
+            </Row>
+          </div>
+        }
+
+      </Container>
+
+      <br /><br />
 
       <CharactersCards comicID={comicID} />
       <br />

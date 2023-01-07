@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import '../style/CharactersResults.css'
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 const CharactersResults = () => {
 
     const API_KEY = process.env.REACT_APP_API_KEY
 
-    const [name, setName] = useState();
-    const [image, setImage] = useState();
+    // const [name, setName] = useState();
+    // const [image, setImage] = useState();
     const [characterList, setCharacterList] = useState([])
 
     let {search} = useParams();
@@ -18,7 +24,7 @@ const CharactersResults = () => {
 
         const details = await data.json();
 
-        console.log(details.data)
+        // console.log(details.data)
 
         setCharacterList(details.data.results)
 
@@ -32,22 +38,29 @@ const CharactersResults = () => {
 
   return (
     <>
-        Characters Results: 
+        <Container className='text-center bg-danger text-white'>
 
-        {
-            characterList.map(info => {
-                return (
-                    <ul key={info.id}>
-                        <li>
-                            <Link to={`/character/${info.name}`} className="">{info.name}</Link>
-                            <br />
-                            <img alt='Character' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
-                        </li>
-                    </ul>
-                )
+            <h1>CHARACTERS RESULTS: </h1>
 
-            })
-        }
+                    {
+                        characterList.map(info => {
+                            return (
+                                <Row className='mt-3 me-5' key={info.id}>
+                                    <Col sm={{ offset: 3 }} md={{ offset: 5 }}>
+                                        <Card style={{ width: '18rem' }}>
+                                            <Button variant='danger'><Link to={`/character/${info.name}`} className="white">{info.name}</Link></Button>
+                                            <br />
+                                            <Card.Img variant="top" alt='Character' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail" />
+                                            <br />
+                                        </Card>
+                                        <br />
+                                    </Col>
+                                </Row>
+                            ) 
+                        })
+                    }
+            <br />
+        </Container>
     </>
   )
 }

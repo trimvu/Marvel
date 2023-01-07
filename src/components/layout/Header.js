@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
@@ -11,7 +11,7 @@ const Header = () => {
         <Row>
           <ul>
               
-              <li> <Link to="/">Home</Link> </li>
+              <li> <Link to="/" className='white'>Home</Link> </li>
               
           </ul>
         </Row>

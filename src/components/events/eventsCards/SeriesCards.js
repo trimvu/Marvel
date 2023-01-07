@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 
 import allActions from '../../../actions/index';
@@ -35,7 +35,7 @@ const SeriesCards = ({eventsID}) => {
         
         const details = await data.json();
 
-        console.log("series cards details: ", details)
+        // console.log("series cards details: ", details)
 
         setSeries1(details.data.results[0])
         setSeries2(details.data.results[1])
@@ -58,7 +58,7 @@ const SeriesCards = ({eventsID}) => {
     <>
 
         <Container>
-          <Row className='text-white bg-danger text-center'><h2>Series: </h2></Row>
+          <Row className='text-white bg-danger text-center'><h2>Serie(s): </h2></Row>
           <br />
           <Row>
             <Col>
@@ -71,7 +71,7 @@ const SeriesCards = ({eventsID}) => {
                   <Card.Img variant="top" src={`${series1.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series1.title}</Card.Title>
-                    <Button variant="danger"><Link to={`/series/${series1.title}`} state={{seriesID: seriesID1}} className="">View Series {seriesID1}</Link></Button>
+                    <Button variant="danger"><Link to={`/series/${series1.title}`} state={{seriesID: seriesID1}} className="white">View Series {seriesID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -86,7 +86,7 @@ const SeriesCards = ({eventsID}) => {
                   <Card.Img variant="top" src={`${series2.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series2.title}</Card.Title>
-                    <Button variant="danger"><Link to={`/series/${series2.title}`} state={{seriesID: seriesID2}} className="">View Series {seriesID2}</Link></Button>
+                    <Button variant="danger"><Link to={`/series/${series2.title}`} state={{seriesID: seriesID2}} className="white">View Series {seriesID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -101,7 +101,7 @@ const SeriesCards = ({eventsID}) => {
                   <Card.Img variant="top" src={`${series3.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series3.title}</Card.Title>
-                    <Button variant="danger"><Link to={`/series/${series3.title}`} state={{seriesID: seriesID3}} className="">View Series {seriesID3}</Link></Button>
+                    <Button variant="danger"><Link to={`/series/${series3.title}`} state={{seriesID: seriesID3}} className="white">View Series {seriesID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -116,7 +116,7 @@ const SeriesCards = ({eventsID}) => {
                   <Card.Img variant="top" src={`${series4.thumbnail.path}.jpg`} />
                   <Card.Body>
                     <Card.Title>{series4.title}</Card.Title>
-                    <Button variant="danger"><Link to={`/series/${series4.title}`} state={{seriesID: seriesID4}} className="">View Series {seriesID4}</Link></Button>
+                    <Button variant="danger"><Link to={`/series/${series4.title}`} state={{seriesID: seriesID4}} className="white">View Series {seriesID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }

@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import '../style/CharactersResults.css'
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 const SeriesResults = () => {
 
   const API_KEY = process.env.REACT_APP_API_KEY
@@ -16,7 +22,7 @@ const SeriesResults = () => {
 
     const details = await data.json();
 
-    console.log(details.data)
+    // console.log(details.data)
 
     setEventsList(details.data.results)
 
@@ -30,21 +36,30 @@ const SeriesResults = () => {
 
   return (
     <>
-        Series Results:
+      <Container className='text-center bg-danger text-white'>
+        
+        <h1>SERIES RESULTS: </h1>
 
         {
           eventsList.map(info => {
             return (
-              <ul key={info.id}>
-                <li>
-                  <Link to={`/series/${info.title}`} state={{seriesID: info.id}} className="">{info.title} {info.id}</Link>
+              <Row className='mt-3 me-5' key={info.id}>
+                <Col sm={{ offset: 3}} md={{ offset: 5 }}>
+                  <Card style={{ width: '18rem' }}>
+                    <Button variant='danger'><Link to={`/series/${info.title}`} state={{seriesID: info.id}} className="white">{info.title} {info.id}</Link></Button>
+                    <br />
+                    <Card.Img alt='serie' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail" />
+                    <br />
+                  </Card>
                   <br />
-                  <img alt='serie' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail"></img>
-                </li>
-              </ul>
+                </Col>
+              </Row>
             )
           })
         }
+        <br />
+      </Container>
+
     </>
   )
 }
