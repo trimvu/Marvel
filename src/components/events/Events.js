@@ -7,7 +7,7 @@ import ComicCards from './eventsCards/ComicCards'
 import CreatorsCards from './eventsCards/CreatorsCards'
 import SeriesCards from './eventsCards/SeriesCards'
 
-import Row from 'react-bootstrap/ROW';
+import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
 const Events = (props) => {
