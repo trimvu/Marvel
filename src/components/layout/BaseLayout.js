@@ -13,7 +13,7 @@ const BaseLayout = (props) => {
 
         <br />
 
-        <Footer />
+        <Footer z/>
     </>
   )
 }

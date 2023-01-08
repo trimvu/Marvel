@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
+import './Header.css';
+
 const Header = () => {
   return (
     <>
-      <Container className='text-center bg-danger .fs-1 color:white'>
+      <Container className='text-center .fs-1 color:white' id='header-bg'>
         <Row>
           <ul>
               
