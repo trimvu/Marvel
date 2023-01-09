@@ -1,10 +1,20 @@
 .footer {
     background-color: red;
     bottom: 0;
-    /* position: fixed; */
-    width: 100vw;
+    position:fixed;
+    width: 80vw;
+    margin-left: 10vw;
     text-align: center;
 }
+
+/* .header {
+    background-color: red;
+    top: 0;
+    position: fixed;
+    width: 80vw;
+    margin-left: 10vw;
+    text-align: center;
+} */
 
 .icons {
     color: white;
