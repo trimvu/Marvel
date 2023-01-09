@@ -10,9 +10,9 @@ import Row from 'react-bootstrap/Row'
 const Footer = () => {
   return (
     <>
-      <Container className='.fs-1'>
+      {/* <Container className='.fs-1'> */}
 
-        <Row>
+        {/* <Row> */}
 
           <div className='footer'>
             
@@ -24,9 +24,9 @@ const Footer = () => {
 
           </div>
 
-        </Row>
+        {/* </Row> */}
 
-      </Container>
+      {/* </Container> */}
     </>
   )
 }

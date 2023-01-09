@@ -8,12 +8,14 @@ const BaseLayout = (props) => {
         <Header />
         
         <br />
+        <br />
         
         {props.children}
 
         <br />
+        <br />
 
-        <Footer z/>
+        <Footer />
     </>
   )
 }
