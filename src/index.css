@@ -36,3 +36,7 @@ code {
 .white:hover {
   color: white;
 }
+
+.red-bg {
+  background-color: red;
+}
