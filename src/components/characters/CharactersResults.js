@@ -19,6 +19,12 @@ const CharactersResults = () => {
     // const [image, setImage] = useState();
     const [characterList, setCharacterList] = useState([])
 
+    const [character1, setCharacter1] = useState()
+    const [character2, setCharacter2] = useState()
+    const [character3, setCharacter3] = useState()
+    const [character4, setCharacter4] = useState()
+    const [character5, setCharacter5] = useState()
+
     let {search} = useParams();
 
     const dispatch = useDispatch();
