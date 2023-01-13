@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useDispatch, useSelector} from 'react-redux'
 import '../style/CharactersResults.css'
+
+import allActions from '../../actions'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,17 +19,25 @@ const ComicResults = () => {
   // const [image, setImage] = useState();
   const [comicList, setComicList] = useState([])
 
+  const [total, setTotal] = useState(0)
+
   let {search} = useParams();
+
+  const dispatch = useDispatch();
+  const items_comic_results = useSelector(state => state.comicResults.items_comic_results)
+
+  let count = items_comic_results / 10
 
   const comicListFetch = async () => {
 
-      const data = await fetch(`https://gateway.marvel.com:443/v1/public/comics?titleStartsWith=${search}&apikey=${API_KEY}&limit=99`)
+      const data = await fetch(`https://gateway.marvel.com:443/v1/public/comics?titleStartsWith=${search}&apikey=${API_KEY}&limit=10&offset=${items_comic_results}`)
 
       const details = await data.json();
 
-      // console.log("comic results: ", details.data)
+      console.log("comic results: ", details.data)
 
       setComicList(details.data.results)
+      setTotal(Math.ceil((details.data.total)/10))
 
   }
 
@@ -34,13 +45,13 @@ const ComicResults = () => {
 
       comicListFetch();
   
-    }, [])
+    }, [items_comic_results])
 
   return (
     <>
-      <Container className='text-center bg-danger text-white'>
+      <Container className='text-center text-white'>
 
-        <h1>COMICS RESULTS: </h1>
+        <h1 className='red-bg'>COMICS RESULTS: </h1>
 
         {
             comicList.map(info => {
@@ -60,6 +71,13 @@ const ComicResults = () => {
             })
         }
         <br />
+        {count+1} of {total}
+        <Row>
+            <Col>
+                <Button variant='danger' onClick={() => dispatch(allActions.decrementComicResultsAction(10))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Button variant='danger' onClick={() => dispatch(allActions.incrementComicResultsAction(10))} >More</Button>
+            </Col>
+        </Row>
       </Container>
     </>
   )

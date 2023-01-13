@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useDispatch, useSelector} from 'react-redux'
 import '../style/CharactersResults.css'
+
+import allActions from '../../actions'
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,17 +17,25 @@ const CreatorsResults = () => {
   
   const [creatorsList, setCreatorsList] = useState([])
 
+  const [total, setTotal] = useState(0)
+
   let {search} = useParams();
+
+  const dispatch = useDispatch();
+  const items_creators_results = useSelector(state => state.creatorsResults.items_creators_results)
+
+  let count = items_creators_results / 10
 
   const creatorsListFetch = async () => {
 
-    const data = await fetch(`https://gateway.marvel.com:443/v1/public/creators?nameStartsWith=${search}&apikey=${API_KEY}&limit=99`)
+    const data = await fetch(`https://gateway.marvel.com:443/v1/public/creators?nameStartsWith=${search}&apikey=${API_KEY}&limit=10&offset=${items_creators_results}`)
 
     const details = await data.json();
 
     // console.log("creator details: ", details)
 
     setCreatorsList(details.data.results)
+    setTotal(Math.ceil((details.data.total)/10))
 
   }
 
@@ -32,13 +43,13 @@ const CreatorsResults = () => {
 
     creatorsListFetch();
 
-  }, [])
+  }, [items_creators_results])
 
   return (
     <>
-      <Container className='text-center bg-danger text-white'>
+      <Container className='text-center text-white'>
         
-        <h1>CREATORS RESULTS: </h1>
+        <h1 className='red-bg'>CREATORS RESULTS: </h1>
 
         {
           creatorsList.map(info => {
@@ -58,6 +69,13 @@ const CreatorsResults = () => {
           })
         }
         <br />
+        {count+1} of {total}
+        <Row>
+            <Col>
+                <Button variant='danger' onClick={() => dispatch(allActions.decrementCreatorsResultsAction(10))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Button variant='danger' onClick={() => dispatch(allActions.incrementCreatorsResultsAction(10))} >More</Button>
+            </Col>
+        </Row>
       </Container>
 
     </>
