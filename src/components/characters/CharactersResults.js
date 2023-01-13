@@ -19,26 +19,25 @@ const CharactersResults = () => {
     // const [image, setImage] = useState();
     const [characterList, setCharacterList] = useState([])
 
-    const [character1, setCharacter1] = useState()
-    const [character2, setCharacter2] = useState()
-    const [character3, setCharacter3] = useState()
-    const [character4, setCharacter4] = useState()
-    const [character5, setCharacter5] = useState()
+    const [total, setTotal] = useState(0)
 
     let {search} = useParams();
 
     const dispatch = useDispatch();
     const items_characters_results = useSelector(state => state.charactersResults.items_characters_results)
 
+    let count = items_characters_results / 10
+
     const characterListFetch = async () => {
 
-        const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&orderBy=name&apikey=${API_KEY}&limit=4&offset=${items_characters_results}`)
+        const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&orderBy=name&apikey=${API_KEY}&limit=10&offset=${items_characters_results}`)
 
         const details = await data.json();
 
-        // console.log(details.data)
+        console.log(details.data)
 
         setCharacterList(details.data.results)
+        setTotal(Math.ceil((details.data.total)/10))
 
     }
 
@@ -46,7 +45,7 @@ const CharactersResults = () => {
 
         characterListFetch();
     
-      }, [])
+      }, [items_characters_results])
 
   return (
     <>
@@ -72,11 +71,11 @@ const CharactersResults = () => {
                         })
                     }
             <br />
-            {items_characters_results}
+            {count+1} of {total}
         <Row>
             <Col>
-                <Button variant='danger' onClick={() => dispatch(allActions.decrementCharactersResultsAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button variant='danger' onClick={() => dispatch(allActions.incrementCharactersResultsAction(4))} >More</Button>
+                <Button variant='danger' onClick={() => dispatch(allActions.decrementCharactersResultsAction(10))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Button variant='danger' onClick={() => dispatch(allActions.incrementCharactersResultsAction(10))} >More</Button>
             </Col>
         </Row>
         </Container>
