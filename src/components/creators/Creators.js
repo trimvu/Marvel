@@ -6,6 +6,10 @@ import ComicCards from './creatorsCards/ComicCards'
 import EventsCards from './creatorsCards/EventsCards'
 import SeriesCards from './creatorsCards/SeriesCards'
 
+import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+
 const Creators = (props) => {
 
   const location = useLocation();
@@ -48,8 +52,11 @@ const Creators = (props) => {
 
   return (
     <>
-        <h1>Creators: {creators}</h1>
-        <h2>CreatorsID: {location.state.creatorsID}</h2>
+        {/* <h1>Creators: {creators}</h1> */}
+        {/* <h2>CreatorsID: {location.state.creatorsID}</h2> */}
+
+      <Container className='text-center bg-danger text-white'>
+        <h1>CREATOR INFO: </h1>
 
         {
           creatorsInfo === undefined
@@ -57,18 +64,24 @@ const Creators = (props) => {
           ''
           :
           <div>
-            <h1>{creatorsInfo.fullName}</h1>
-            {/* <p>{description}</p> */}
-            <img alt='creator' src={`${image}.jpg`} ></img>  
+            <Row>
+              <h1>{creatorsInfo.fullName}</h1>
+              {/* <p>{description}</p> */}
+              <img alt='creator' src={`${image}.jpg`} ></img>  
+            </Row>
           </div>
 
         }
 
-        <ComicCards creatorsID={creatorsID} />
-        <br />
-        <EventsCards creatorsID={creatorsID} />
-        <br />
-        <SeriesCards creatorsID={creatorsID} />
+      </Container>
+
+      <br /><br />
+
+      <ComicCards creatorsID={creatorsID} />
+      <br />
+      <EventsCards creatorsID={creatorsID} />
+      <br />
+      <SeriesCards creatorsID={creatorsID} />
     </>
   )
 }

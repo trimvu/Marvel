@@ -34,7 +34,7 @@ const CharactersResults = () => {
 
         const details = await data.json();
 
-        console.log(details.data)
+        // console.log(details.data)
 
         setCharacterList(details.data.results)
         setTotal(Math.ceil((details.data.total)/10))
@@ -72,12 +72,12 @@ const CharactersResults = () => {
                     }
             <br />
             {count+1} of {total}
-        <Row>
-            <Col>
-                <Button variant='danger' onClick={() => dispatch(allActions.decrementCharactersResultsAction(10))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Button variant='danger' onClick={() => dispatch(allActions.incrementCharactersResultsAction(10))} >More</Button>
-            </Col>
-        </Row>
+            <Row>
+                <Col>
+                    <Button variant='danger' onClick={() => dispatch(allActions.decrementCharactersResultsAction(10))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <Button variant='danger' onClick={() => dispatch(allActions.incrementCharactersResultsAction(10))} >More</Button>
+                </Col>
+            </Row>
         </Container>
     </>
   )
