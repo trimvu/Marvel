@@ -54,7 +54,7 @@ const Series = (props) => {
     <>
         {/* <h1>Series: {series}</h1>
         <h2>{location.state.seriesID}</h2> */}
-
+        <br />
         <Container className='text-center bg-danger text-white'>
 
           <h1>SERIE INFO: </h1>

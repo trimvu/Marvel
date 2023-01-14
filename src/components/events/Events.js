@@ -54,7 +54,7 @@ const Events = (props) => {
     <>
         {/* <h1>Events: {events}</h1> */}
         {/* <h2>EventsID: {location.state.eventsID}</h2> */}
-
+        <br />
         <Container className='text-center bg-danger text-white'>
 
           <h1>EVENT INFO: </h1>

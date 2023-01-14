@@ -5,12 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url("../public/Avengers_VC.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat; */
+  color: white;
+  list-style: none;
+}
+
+body::after {
+  content: "";
   background-image: url("../public/Avengers_VC.jpg");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  color: white;
-  list-style: none;
+  position: fixed;
+  z-index: -1;
 }
 
 code {
@@ -18,9 +33,28 @@ code {
     monospace;
 }
 
+.search-div {
+  /* background-color: red; */
+  /* top: 0; */
+  /* position: fixed; */
+  height: 80vh;
+  width: 70vw;
+  margin-left: 15vw;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* z-index: 100; */
+  font-size: 3vh;
+  /* font-weight: bold; */
+}
+
 .search-bar {
-  margin: auto;
-  display: block;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .options {

@@ -1,3 +1,7 @@
 body {
     color: white;
 }
+
+.center-text {
+    text-align: center;
+}

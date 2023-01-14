@@ -55,7 +55,7 @@ const Comic = (props) => {
     <>
         {/* <h1>Comic: {comic}</h1> */}
         {/* <h2>ComicID: {location.state.comicID}</h2> */}
-
+      <br />
       <Container className='text-center bg-danger text-white'>
       
         <h1>COMIC INFO: </h1>
