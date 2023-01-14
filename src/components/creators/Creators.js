@@ -54,7 +54,7 @@ const Creators = (props) => {
     <>
         {/* <h1>Creators: {creators}</h1> */}
         {/* <h2>CreatorsID: {location.state.creatorsID}</h2> */}
-
+      <br />
       <Container className='text-center bg-danger text-white'>
         <h1>CREATOR INFO: </h1>
 

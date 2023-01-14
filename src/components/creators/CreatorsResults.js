@@ -47,6 +47,7 @@ const CreatorsResults = () => {
 
   return (
     <>
+      <br />
       <Container className='text-center text-white'>
         
         <h1 className='red-bg'>CREATORS RESULTS: </h1>
@@ -69,10 +70,11 @@ const CreatorsResults = () => {
           })
         }
         <br />
-        {count+1} of {total}
+        {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={() => dispatch(allActions.decrementCreatorsResultsAction(10))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Button variant='danger' onClick={() => dispatch(allActions.decrementCreatorsResultsAction(10))} >Back</Button>
+                <Button variant='danger' disabled >{count+1} of {total}</Button>
                 <Button variant='danger' onClick={() => dispatch(allActions.incrementCreatorsResultsAction(10))} >More</Button>
             </Col>
         </Row>

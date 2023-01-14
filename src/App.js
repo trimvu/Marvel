@@ -38,20 +38,20 @@ const App = () => {
 
   return (
     <>
-      App
-      <div>
+      {/* App */} <br />
+      <div className='search-div'>
           
-          <form onSubmit={handleSubmit}>
-            <select className='options' onChange={(e) => setOptionValue(e.target.value)}>
+          <form className='search-bar' onSubmit={handleSubmit}>
+            <select onChange={(e) => setOptionValue(e.target.value)}>
               <option disabled selected hidden>Choose Category</option>
               <option value="characters">Character</option>
               <option value="comic">Comic</option>
               <option value="creators">Creators</option>
               <option value="events">Events</option>
               <option value="series">Series</option>
-            </select>
-              <input type="text" className='search-bar' value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} required/>
-              <input type="submit" className='search-bar'/>
+            </select> <br /><br />
+              <input type="text" value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} required/> <br /><br />
+              <input type="submit" />
           </form>
           
       </div>

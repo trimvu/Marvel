@@ -49,6 +49,7 @@ const ComicResults = () => {
 
   return (
     <>
+      <br />
       <Container className='text-center text-white'>
 
         <h1 className='red-bg'>COMICS RESULTS: </h1>
@@ -71,10 +72,11 @@ const ComicResults = () => {
             })
         }
         <br />
-        {count+1} of {total}
+        {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={() => dispatch(allActions.decrementComicResultsAction(10))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Button variant='danger' onClick={() => dispatch(allActions.decrementComicResultsAction(10))} >Back</Button>
+                <Button variant='danger' disabled >{count+1} of {total}</Button>
                 <Button variant='danger' onClick={() => dispatch(allActions.incrementComicResultsAction(10))} >More</Button>
             </Col>
         </Row>

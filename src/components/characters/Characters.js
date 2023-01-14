@@ -54,6 +54,7 @@ const Characters = () => {
 
   return (
     <>
+      <br />
       <Container className='text-center bg-danger text-white'>
         <h1>CHARACTER INFO: </h1>
 
@@ -81,7 +82,7 @@ const Characters = () => {
         <br />
         <SeriesCards characterID={characterID} />
 
-        <div>
+        <div className='center-text'>
           <h2>
             <a href={additionalInfo} target="_blank" rel='noreferrer'>
               Additional Information
