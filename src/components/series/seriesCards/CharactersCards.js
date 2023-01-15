@@ -37,7 +37,14 @@ const CharactersCards = ({seriesID}) => {
 
     const details = await data.json();
 
-    // console.log("characters card details: ", details)
+    let count = details.data.total
+
+    if (items_characters > count) {
+      items_characters = 0;
+    }
+
+    console.log("characters card details: ", details)
+    console.log(count)
 
     setCharacter1(details.data.results[0])
     setCharacter2(details.data.results[1])

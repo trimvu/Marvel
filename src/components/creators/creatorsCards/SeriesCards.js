@@ -58,7 +58,7 @@ const SeriesCards = ({creatorsID}) => {
     <>
 
         <Container>
-          <Row className='text-white bg-danger text-center'><h2>Serie(s): </h2></Row>
+          <Row className='text-white bg-danger text-center'><h2>Series: </h2></Row>
           <br />
           <Row>
             <Col>
