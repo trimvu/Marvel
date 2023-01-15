@@ -34,7 +34,7 @@ const ComicResults = () => {
 
       const details = await data.json();
 
-      console.log("comic results: ", details.data)
+      // console.log("comic results: ", details.data)
 
       setComicList(details.data.results)
       setTotal(Math.ceil((details.data.total)/10))

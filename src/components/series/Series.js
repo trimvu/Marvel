@@ -57,7 +57,7 @@ const Series = (props) => {
         <br />
         <Container className='text-center bg-danger text-white'>
 
-          <h1>SERIE INFO: </h1>
+          <h1>SERIES INFO: </h1>
 
           {
             seriesInfo === undefined

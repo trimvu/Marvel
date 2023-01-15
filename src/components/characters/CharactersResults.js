@@ -30,16 +30,21 @@ const CharactersResults = () => {
 
     const characterListFetch = async () => {
 
+        if ((count+1) > total) {
+            items_characters_results = 0;
+        }
         const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&orderBy=name&apikey=${API_KEY}&limit=10&offset=${items_characters_results}`)
 
         const details = await data.json();
 
         // console.log(details.data)
+        console.log(items_characters_results)
 
         setCharacterList(details.data.results)
         setTotal(Math.ceil((details.data.total)/10))
 
     }
+
 
     useEffect(() => {
 
