@@ -20,35 +20,40 @@ const CharactersResults = () => {
     const [characterList, setCharacterList] = useState([])
 
     const [total, setTotal] = useState(0)
-
+    const [total2, setTotal2] = useState(0)
+    
     let {search} = useParams();
 
     const dispatch = useDispatch();
-    const items_characters_results = useSelector(state => state.charactersResults.items_characters_results)
+    let items_characters_results = useSelector(state => state.charactersResults.items_characters_results)
 
     let count = items_characters_results / 10
-
+    
     const characterListFetch = async () => {
-
-        if ((count+1) > total) {
-            items_characters_results = 0;
-        }
+        
         const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&orderBy=name&apikey=${API_KEY}&limit=10&offset=${items_characters_results}`)
 
         const details = await data.json();
 
         // console.log(details.data)
         console.log(items_characters_results)
-
+        
         setCharacterList(details.data.results)
         setTotal(Math.ceil((details.data.total)/10))
-
+        setTotal2(details.data.total)
+        
     }
-
-
-    useEffect(() => {
-
-        characterListFetch();
+    
+    // if (items_characters_results > total2) {
+    //     items_characters_results = 0;
+    // } 
+    // else {
+        //     items_characters_results = total2;
+        // }
+        
+        useEffect(() => {
+            
+            characterListFetch();
     
       }, [items_characters_results])
 
