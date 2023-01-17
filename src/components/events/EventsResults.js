@@ -18,6 +18,7 @@ const EventsResults = () => {
   const [eventsList, setEventsList] = useState([])
 
   const [total, setTotal] = useState(0)
+  const [total2, setTotal2] = useState(0)
 
   let {search} = useParams();
 
@@ -36,6 +37,26 @@ const EventsResults = () => {
 
     setEventsList(details.data.results)
     setTotal(Math.ceil((details.data.total)/10))
+
+  }
+
+  const resetIncrementFetch = () => {
+
+    if (((total2 - items_events_results) < 10) || ((total2 - items_events_results) === 10)) {
+        return () => dispatch(allActions.resetEventsResultsAction(0))
+    } else {
+        return () => dispatch(allActions.incrementEventsResultsAction(10))
+    }
+
+  }
+
+  const resetDecrementFetch = () => {
+
+      if (items_events_results <= 0) {
+          return () => dispatch(allActions.resetEventsResultsAction(0))
+      } else {
+          return () => dispatch(allActions.decrementEventsResultsAction(10))
+      }
 
   }
 
@@ -73,9 +94,9 @@ const EventsResults = () => {
         {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={() => dispatch(allActions.decrementEventsResultsAction(10))} >Back</Button>
+                <Button variant='danger' onClick={resetDecrementFetch()} >Back</Button>
                 <Button variant='danger' disabled >{count+1} of {total}</Button>
-                <Button variant='danger' onClick={() => dispatch(allActions.incrementEventsResultsAction(10))} >More</Button>
+                <Button variant='danger' onClick={resetIncrementFetch()} >More</Button>
             </Col>
         </Row>
       </Container>

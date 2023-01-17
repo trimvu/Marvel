@@ -18,6 +18,7 @@ const CreatorsResults = () => {
   const [creatorsList, setCreatorsList] = useState([])
 
   const [total, setTotal] = useState(0)
+  const [total2, setTotal2] = useState(0)
 
   let {search} = useParams();
 
@@ -36,6 +37,27 @@ const CreatorsResults = () => {
 
     setCreatorsList(details.data.results)
     setTotal(Math.ceil((details.data.total)/10))
+    setTotal2(details.data.total)
+
+  }
+
+  const resetIncrementFetch = () => {
+
+    if (((total2 - items_creators_results) < 10) || ((total2 - items_creators_results) === 10)) {
+        return () => dispatch(allActions.resetCreatorsResultsAction(0))
+    } else {
+        return () => dispatch(allActions.incrementCreatorsResultsAction(10))
+    }
+
+  }
+
+  const resetDecrementFetch = () => {
+
+      if (items_creators_results <= 0) {
+          return () => dispatch(allActions.resetCreatorsResultsAction(0))
+      } else {
+          return () => dispatch(allActions.decrementCreatorsResultsAction(10))
+      }
 
   }
 
@@ -73,9 +95,9 @@ const CreatorsResults = () => {
         {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={() => dispatch(allActions.decrementCreatorsResultsAction(10))} >Back</Button>
+                <Button variant='danger' onClick={resetDecrementFetch()} >Back</Button>
                 <Button variant='danger' disabled >{count+1} of {total}</Button>
-                <Button variant='danger' onClick={() => dispatch(allActions.incrementCreatorsResultsAction(10))} >More</Button>
+                <Button variant='danger' onClick={resetIncrementFetch()} >More</Button>
             </Col>
         </Row>
       </Container>
