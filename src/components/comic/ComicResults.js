@@ -20,6 +20,7 @@ const ComicResults = () => {
   const [comicList, setComicList] = useState([])
 
   const [total, setTotal] = useState(0)
+  const [total2, setTotal2] = useState(0)
 
   let {search} = useParams();
 
@@ -38,8 +39,29 @@ const ComicResults = () => {
 
       setComicList(details.data.results)
       setTotal(Math.ceil((details.data.total)/10))
+      setTotal2(details.data.total)
 
   }
+
+  const resetIncrementFetch = () => {
+
+    if (((total2 - items_comic_results) < 10) || ((total2 - items_comic_results) === 10)) {
+        return () => dispatch(allActions.resetComicResultsAction(0))
+    } else {
+        return () => dispatch(allActions.incrementComicResultsAction(10))
+    }
+
+}
+
+const resetDecrementFetch = () => {
+
+    if (items_comic_results <= 0) {
+        return () => dispatch(allActions.resetComicResultsAction(0))
+    } else {
+        return () => dispatch(allActions.decrementComicResultsAction(10))
+    }
+
+}
 
   useEffect(() => {
 
@@ -75,9 +97,9 @@ const ComicResults = () => {
         {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={() => dispatch(allActions.decrementComicResultsAction(10))} >Back</Button>
+                <Button variant='danger' onClick={resetDecrementFetch()} >Back</Button>
                 <Button variant='danger' disabled >{count+1} of {total}</Button>
-                <Button variant='danger' onClick={() => dispatch(allActions.incrementComicResultsAction(10))} >More</Button>
+                <Button variant='danger' onClick={resetIncrementFetch()} >More</Button>
             </Col>
         </Row>
       </Container>
