@@ -21,6 +21,12 @@ const seriesReducer = (state, action) => {
                 items_series: state.items_series - action.data
             }
 
+        case "RESET_SERIES_ITEMS":
+            return {
+                ...state,
+                items_series: 0
+            }
+
         default:
             return state
     }

@@ -21,6 +21,12 @@ const creatorsResultsReducer = (state, action) => {
                 items_creators_results: state.items_creators_results - action.data
             }
 
+        case "RESET_CREATORS_RESULTS_ITEMS":
+            return {
+                ...state,
+                items_creators_results: 0
+            }
+
         default:
             return state
     }
