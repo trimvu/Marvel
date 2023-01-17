@@ -18,6 +18,7 @@ import incrementEventsAction from './incrementEventsAction'
 import incrementEventsResultsAction from './incrementEventsResultsAction'
 import incrementSeriesAction from './incrementSeriesAction'
 import incrementSeriesResultsAction from './incrementSeriesResultsAction'
+import resetCharactersResultsAction from './resetCharactersResultsAction'
 
 const allActions = {
     decrementCharactersAction,
@@ -39,7 +40,8 @@ const allActions = {
     incrementEventsAction,
     incrementEventsResultsAction,
     incrementSeriesAction,
-    incrementSeriesResultsAction
+    incrementSeriesResultsAction,
+    resetCharactersResultsAction
 }
 
 export default allActions

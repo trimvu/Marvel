@@ -21,6 +21,12 @@ const charactersResultsReducer = (state, action) => {
                 items_characters_results: state.items_characters_results - action.data
             }
 
+        case "RESET_CHARACTERS_RESULTS_ITEMS":
+            return {
+                ...state,
+                items_characters_results: 0
+            }
+
         default:
             return state
     }

@@ -36,7 +36,8 @@ const CharactersResults = () => {
         const details = await data.json();
 
         // console.log(details.data)
-        console.log(items_characters_results)
+        // console.log("items_characters_results", items_characters_results)
+        // console.log("total2", total2)
         
         setCharacterList(details.data.results)
         setTotal(Math.ceil((details.data.total)/10))
@@ -50,12 +51,32 @@ const CharactersResults = () => {
     // else {
         //     items_characters_results = total2;
         // }
-        
-        useEffect(() => {
-            
-            characterListFetch();
     
-      }, [items_characters_results])
+    const resetIncrementFetch = () => {
+
+        if ((total2 - items_characters_results) < 10) {
+            return () => dispatch(allActions.resetCharactersResultsAction(0))
+        } else {
+            return () => dispatch(allActions.incrementCharactersResultsAction(10))
+        }
+
+    }
+
+    const resetDecrementFetch = () => {
+
+        if (items_characters_results <= 0) {
+            return () => dispatch(allActions.resetCharactersResultsAction(0))
+        } else {
+            return () => dispatch(allActions.decrementCharactersResultsAction(10))
+        }
+
+    }
+        
+    useEffect(() => {
+            
+        characterListFetch();
+    
+    }, [items_characters_results])
 
   return (
     <>
@@ -85,9 +106,9 @@ const CharactersResults = () => {
             {/* {count+1} of {total} */}
             <Row>
                 <Col>
-                    <Button variant='danger' onClick={() => dispatch(allActions.decrementCharactersResultsAction(10))} >Back</Button>
+                    <Button variant='danger' onClick={resetDecrementFetch()} >Back</Button>
                     <Button variant='danger' disabled>{count+1} of {total}</Button>
-                    <Button variant='danger' onClick={() => dispatch(allActions.incrementCharactersResultsAction(10))} >More</Button>
+                    <Button variant='danger' onClick={resetIncrementFetch()} >More</Button>
                 </Col>
             </Row>
         </Container>
