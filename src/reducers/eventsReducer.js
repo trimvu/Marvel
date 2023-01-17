@@ -20,6 +20,12 @@ const eventsReducer = (state, action) => {
                 ...state,
                 items_events: state.items_events - action.data
             }
+        
+        case "RESET_EVENTS_ITEMS":
+            return {
+                ...state,
+                items_events: 0
+            }
 
         default:
             return state

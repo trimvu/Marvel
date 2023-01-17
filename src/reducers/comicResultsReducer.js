@@ -21,6 +21,12 @@ const comicResultsReducer = (state, action) => {
                 items_comic_results: state.items_comic_results - action.data
             }
 
+        case "RESET_COMIC_RESULTS_ITEMS":
+            return {
+                ...state,
+                items_comic_results: 0
+            }
+
         default:
             return state
     }

@@ -36,8 +36,8 @@ const CharactersResults = () => {
         const details = await data.json();
 
         // console.log(details.data)
-        // console.log("items_characters_results", items_characters_results)
-        // console.log("total2", total2)
+        console.log("items_characters_results", items_characters_results)
+        console.log("total2", total2)
         
         setCharacterList(details.data.results)
         setTotal(Math.ceil((details.data.total)/10))
@@ -45,16 +45,9 @@ const CharactersResults = () => {
         
     }
     
-    // if (items_characters_results > total2) {
-    //     items_characters_results = 0;
-    // } 
-    // else {
-        //     items_characters_results = total2;
-        // }
-    
     const resetIncrementFetch = () => {
 
-        if ((total2 - items_characters_results) < 10) {
+        if (((total2 - items_characters_results) < 10) || ((total2 - items_characters_results) === 10)) {
             return () => dispatch(allActions.resetCharactersResultsAction(0))
         } else {
             return () => dispatch(allActions.incrementCharactersResultsAction(10))

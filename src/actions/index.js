@@ -18,7 +18,16 @@ import incrementEventsAction from './incrementEventsAction'
 import incrementEventsResultsAction from './incrementEventsResultsAction'
 import incrementSeriesAction from './incrementSeriesAction'
 import incrementSeriesResultsAction from './incrementSeriesResultsAction'
+import resetCharactersAction from './resetCharactersAction'
 import resetCharactersResultsAction from './resetCharactersResultsAction'
+import resetComicAction from './resetComicAction'
+import resetComicResultsAction from './resetComicResultsAction'
+import resetCreatorsAction from './resetCreatorsAction'
+import resetCreatorsResultsAction from './resetCreatorsResultsAction'
+import resetEventsAction from './resetEventsAction'
+import resetEventsResultsAction from './resetEventsResultsAction'
+import resetSeriesAction from './resetSeriesAction'
+import resetSeriesResultsAction from './resetSeriesResultsAction'
 
 const allActions = {
     decrementCharactersAction,
@@ -41,7 +50,16 @@ const allActions = {
     incrementEventsResultsAction,
     incrementSeriesAction,
     incrementSeriesResultsAction,
-    resetCharactersResultsAction
+    resetCharactersAction,
+    resetCharactersResultsAction,
+    resetComicAction,
+    resetComicResultsAction,
+    resetCreatorsAction,
+    resetCreatorsResultsAction,
+    resetEventsAction,
+    resetEventsResultsAction,
+    resetSeriesAction,
+    resetSeriesResultsAction
 }
 
 export default allActions
