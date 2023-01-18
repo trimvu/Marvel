@@ -19,6 +19,7 @@ const Characters = () => {
   // const [availableSeries, setAvailableSeries] = useState()
   const [image, setImage] = useState()
   // const [description, setDescription] = useState()
+  const [extension, setExtension] = useState()
 
   const [characterID, setCharacterID] = useState()
 
@@ -34,10 +35,13 @@ const Characters = () => {
 
     const details = await data.json(); 
 
+    console.log(details)
+
     setCharacterInfo(details.data.results[0]);
     // setAvailableSeries(details.data.results[0].series.available)
     // setDescription(details.description)
     setImage(details.data.results[0].thumbnail.path)
+    setExtension(details.data.results[0].thumbnail.extension)
     setCharacterID(details.data.results[0].id)
     
     setAdditionalInfo(details.data.results[0].urls[0].url)
@@ -67,10 +71,12 @@ const Characters = () => {
             <Row>
               <h1>{characterInfo.name}</h1>
               <p>{characterInfo.description}</p>
-              <img alt='character' src={`${image}.jpg`} ></img>
+              <img alt='character' src={`${image}.${extension}`} ></img>
             </Row>
           </div>
         }
+
+        <br />
 
       </Container>
 

@@ -20,6 +20,7 @@ const Events = (props) => {
 
   const [eventsInfo, setEventsInfo] = useState([])
   const [image, setImage] = useState()
+  const [extension, setExtension] = useState()
   const [description, setDescription] = useState()
 
   const [eventsID, setEventsID] = useState()
@@ -38,6 +39,7 @@ const Events = (props) => {
 
     setEventsInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
+    setExtension(details.data.results[0].thumbnail.extension)
     setDescription(details.data.results[0].description)
 
     setEventsID(details.data.results[0].id)
@@ -68,11 +70,13 @@ const Events = (props) => {
               <Row>
                 <h1>{eventsInfo.title}</h1>
                 <p>{description}</p>
-                <img alt='event' src={`${image}.jpg`} ></img>
+                <img alt='event' src={`${image}.${extension}`} ></img>
               </Row>
             </div>
 
           }
+
+          <br />
 
         </Container>
 

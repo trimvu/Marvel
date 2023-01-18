@@ -26,8 +26,13 @@ const EventsCards = ({comicID}) => {
   const [eventsID3, setEventsID3] = useState()
   const [eventsID4, setEventsID4] = useState()
 
+  const [total, setTotal] = useState()
+  const [total2, setTotal2] = useState()
+
   const dispatch = useDispatch();
   const items_events = useSelector(state => state.events.items_events)
+
+  const count = items_events / 4
 
   const eventsDetail = async () => {
 
@@ -39,6 +44,9 @@ const EventsCards = ({comicID}) => {
 
     // console.log("events card details: ", details)
 
+    setTotal(Math.ceil((details.data.total)/4))
+    setTotal2(details.data.total)
+
     setEvents1(details.data.results[0])
     setEvents2(details.data.results[1])
     setEvents3(details.data.results[2])
@@ -48,6 +56,36 @@ const EventsCards = ({comicID}) => {
     setEventsID2(details.data.results[1].id)
     setEventsID3(details.data.results[2].id)
     setEventsID4(details.data.results[3].id)
+
+  }
+
+  const resetIncrementFetch = () => {
+
+    if (((total2 - items_events) < 4) || ((total2 - items_events) === 4)) {
+        return () => dispatch(allActions.resetEventsAction(0))
+    } else {
+        return () => dispatch(allActions.incrementEventsAction(4))
+    }
+
+  }
+
+  const resetDecrementFetch = () => {
+
+      if (items_events <= 0) {
+          return () => dispatch(allActions.resetEventsAction(0))
+      } else {
+          return () => dispatch(allActions.decrementEventsAction(4))
+      }
+
+  }
+
+  const oneOrZero = () => {
+
+      if (total2 === 0) {
+          return 0;
+      } else {
+          return (count + 1);
+      }
 
   }
 
@@ -70,7 +108,7 @@ const EventsCards = ({comicID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={`${events1.thumbnail.path}.jpg`} />
+                  <Card.Img variant="top" src={`${events1.thumbnail.path}.${events1.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{events1.title}</Card.Title>
                     <Button variant="danger"><Link to={`/events/${events1.title}`} state={{eventsID: eventsID1}} className="white">View events {eventsID1}</Link></Button>
@@ -85,7 +123,7 @@ const EventsCards = ({comicID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={`${events2.thumbnail.path}.jpg`} />
+                  <Card.Img variant="top" src={`${events2.thumbnail.path}.${events2.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{events2.title}</Card.Title>
                     <Button variant="danger"><Link to={`/events/${events2.title}`} state={{eventsID: eventsID2}} className="white">View events {eventsID2}</Link></Button>
@@ -100,7 +138,7 @@ const EventsCards = ({comicID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={`${events3.thumbnail.path}.jpg`} />
+                  <Card.Img variant="top" src={`${events3.thumbnail.path}.${events3.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{events3.title}</Card.Title>
                     <Button variant="danger"><Link to={`/events/${events3.title}`} state={{eventsID: eventsID3}} className="white">View events {eventsID3}</Link></Button>
@@ -115,7 +153,7 @@ const EventsCards = ({comicID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={`${events4.thumbnail.path}.jpg`} />
+                  <Card.Img variant="top" src={`${events4.thumbnail.path}.${events4.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{events4.title}</Card.Title>
                     <Button variant="danger"><Link to={`/events/${events4.title}`} state={{eventsID: eventsID4}} className="white">View events {eventsID4}</Link></Button>
@@ -127,8 +165,9 @@ const EventsCards = ({comicID}) => {
           <br />
           <Row>
             <Col md={{offset: 5 }}>
-              <Button variant='danger' onClick={() => dispatch(allActions.decrementEventsAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Button variant='danger' onClick={() => dispatch(allActions.incrementEventsAction(4))} >More</Button>
+              <Button variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
+              <Button variant='danger' disabled>{oneOrZero()} of {total}</Button>
+              <Button variant='danger' onClick={resetIncrementFetch()} >Next</Button>
             </Col>
           </Row>
         </Container>

@@ -20,6 +20,7 @@ const Comic = (props) => {
 
   const [comicInfo, setComicInfo] = useState([])
   const [image, setImage] = useState()
+  const [extension, setExtension] = useState()
   const [price, setPrice] = useState()
 
   const [comicID, setComicID] = useState()
@@ -34,10 +35,11 @@ const Comic = (props) => {
 
     const details = await data.json();
 
-    // console.log("comic details:", details)
+    console.log("comic details:", details)
 
     setComicInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
+    setExtension(details.data.results[0].thumbnail.extension)
     setPrice(details.data.results[0].prices[0].price)
 
     setComicID(details.data.results[0].id)
@@ -70,10 +72,12 @@ const Comic = (props) => {
               <h1>{comicInfo.title}</h1>
               <p>Price: ${price}</p>
               <h2>Image</h2>
-              <img alt='comic' src={`${image}.jpg`} ></img>
+              <img alt='comic' src={`${image}.${extension}`} ></img>
             </Row>
           </div>
         }
+
+        <br />
 
       </Container>
 

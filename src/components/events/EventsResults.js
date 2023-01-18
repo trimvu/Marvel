@@ -37,6 +37,7 @@ const EventsResults = () => {
 
     setEventsList(details.data.results)
     setTotal(Math.ceil((details.data.total)/10))
+    setTotal2(details.data.total)
 
   }
 
@@ -60,6 +61,16 @@ const EventsResults = () => {
 
   }
 
+  const oneOrZero = () => {
+
+    if (total2 === 0) {
+        return 0;
+    } else {
+        return (count + 1);
+    }
+
+  }
+
   useEffect(() => {
 
     eventsListFetch();
@@ -72,6 +83,7 @@ const EventsResults = () => {
       <Container className='text-center text-white'>
 
         <h1 className='red-bg'>EVENTS RESULTS: </h1>
+        <h1 className='red-bg'>Search results for: {search}</h1>
         
         {
           eventsList.map(info => {
@@ -81,7 +93,7 @@ const EventsResults = () => {
                   <Card style={{ width: '18rem' }}>
                     <Button variant='danger'><Link to={`/events/${info.title}`} state={{eventsID: info.id}} className="white">{info.title} {info.id}</Link></Button>
                     <br />
-                    <Card.Img alt='Event' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail" />
+                    <Card.Img alt='Event' src={`${info.thumbnail.path}.${info.thumbnail.extension}`} className="result-thumbnail" />
                     <br />
                   </Card>
                   <br />
@@ -94,9 +106,9 @@ const EventsResults = () => {
         {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={resetDecrementFetch()} >Back</Button>
-                <Button variant='danger' disabled >{count+1} of {total}</Button>
-                <Button variant='danger' onClick={resetIncrementFetch()} >More</Button>
+                <Button variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
+                <Button variant='danger' disabled >{oneOrZero()} of {total}</Button>
+                <Button variant='danger' onClick={resetIncrementFetch()} >Next</Button>
             </Col>
         </Row>
       </Container>

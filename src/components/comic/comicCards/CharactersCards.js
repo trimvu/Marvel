@@ -26,8 +26,13 @@ const CharactersCards = ({comicID}) => {
   const [characterID3, setCharacterID3] = useState()
   const [characterID4, setCharacterID4] = useState()
 
+  const [total, setTotal] = useState()
+  const [total2, setTotal2] = useState()
+
   const dispatch = useDispatch();
   const items_characters = useSelector(state => state.characters.items_characters)
+
+  const count = items_characters / 4
 
   const charactersDetail = async () => {
     
@@ -37,14 +42,11 @@ const CharactersCards = ({comicID}) => {
 
     const details = await data.json();
 
-    let count = details.data.total
-
-    if (items_characters > count) {
-      items_characters = 0;
-    }
-
     // console.log("characters card details: ", details)
     // console.log(count)
+
+    setTotal(Math.ceil((details.data.total)/4))
+    setTotal2(details.data.total)
 
     setCharacter1(details.data.results[0])
     setCharacter2(details.data.results[1])
@@ -55,6 +57,40 @@ const CharactersCards = ({comicID}) => {
     setCharacterID2(details.data.results[1].id)
     setCharacterID3(details.data.results[2].id)
     setCharacterID4(details.data.results[3].id)
+
+
+    // console.log("total", total)
+    // console.log("total2", total2)
+
+  }
+
+  const resetIncrementFetch = () => {
+
+    if (((total2 - items_characters) < 4) || ((total2 - items_characters) === 4)) {
+        return () => dispatch(allActions.resetCharactersAction(0))
+    } else {
+        return () => dispatch(allActions.incrementCharactersAction(4))
+    }
+
+  }
+
+  const resetDecrementFetch = () => {
+
+      if (items_characters <= 0) {
+          return () => dispatch(allActions.resetCharactersAction(0))
+      } else {
+          return () => dispatch(allActions.decrementCharactersAction(4))
+      }
+
+  }
+
+  const oneOrZero = () => {
+
+      if (total2 === 0) {
+          return 0;
+      } else {
+          return (count + 1);
+      }
 
   }
 
@@ -77,7 +113,7 @@ const CharactersCards = ({comicID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={`${character1.thumbnail.path}.jpg`} />
+                  <Card.Img variant="top" src={`${character1.thumbnail.path}.${character1.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{character1.name}</Card.Title>
                     <Button variant="danger"><Link to={`/character/${character1.name}`} state={{characterID: characterID1}} className="white">View character {characterID1}</Link></Button>
@@ -92,7 +128,7 @@ const CharactersCards = ({comicID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={`${character2.thumbnail.path}.jpg`} />
+                  <Card.Img variant="top" src={`${character2.thumbnail.path}.${character2.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{character2.name}</Card.Title>
                     <Button variant="danger"><Link to={`/character/${character2.name}`} state={{characterID: characterID2}} className="white">View character {characterID2}</Link></Button>
@@ -107,7 +143,7 @@ const CharactersCards = ({comicID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={`${character3.thumbnail.path}.jpg`} />
+                  <Card.Img variant="top" src={`${character3.thumbnail.path}.${character3.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{character3.name}</Card.Title>
                     <Button variant="danger"><Link to={`/character/${character3.name}`} state={{characterID: characterID3}} className="white">View character {characterID3}</Link></Button>
@@ -122,7 +158,7 @@ const CharactersCards = ({comicID}) => {
                 ''
                 :
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={`${character4.thumbnail.path}.jpg`} />
+                  <Card.Img variant="top" src={`${character4.thumbnail.path}.${character4.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{character4.name}</Card.Title>
                     <Button variant="danger"><Link to={`/character/${character4.name}`} state={{characterID: characterID4}} className="white">View character {characterID4}</Link></Button>
@@ -134,8 +170,9 @@ const CharactersCards = ({comicID}) => {
           <br />
           <Row>
             <Col md={{offset: 5 }}>
-              <Button variant='danger' onClick={() => dispatch(allActions.decrementCharactersAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Button variant='danger' onClick={() => dispatch(allActions.incrementCharactersAction(4))} >More</Button>
+              <Button variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
+              <Button variant='danger' disabled>{oneOrZero()} of {total}</Button>
+              <Button variant='danger' onClick={resetIncrementFetch()} >Next</Button>
             </Col>
           </Row>
         </Container>
