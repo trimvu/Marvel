@@ -20,6 +20,7 @@ const Creators = (props) => {
 
   const [creatorsInfo, setCreatorsInfo] = useState([])
   const [image, setImage] = useState()
+  const [extension, setExtension] = useState()
 
   const [creatorsID, setCreatorsID] = useState()
 
@@ -37,6 +38,7 @@ const Creators = (props) => {
 
     setCreatorsInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
+    setExtension(details.data.results[0].thumbnail.extension)
 
     setCreatorsID(details.data.results[0].id)
 
@@ -67,11 +69,13 @@ const Creators = (props) => {
             <Row>
               <h1>{creatorsInfo.fullName}</h1>
               {/* <p>{description}</p> */}
-              <img alt='creator' src={`${image}.jpg`} ></img>  
+              <img alt='creator' src={`${image}.${extension}`} ></img>  
             </Row>
           </div>
 
         }
+
+        <br />
 
       </Container>
 

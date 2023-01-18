@@ -61,6 +61,16 @@ const CreatorsResults = () => {
 
   }
 
+  const oneOrZero = () => {
+
+    if (total2 === 0) {
+        return 0;
+    } else {
+        return (count + 1);
+    }
+
+  }
+
   useEffect(() => {
 
     creatorsListFetch();
@@ -73,6 +83,7 @@ const CreatorsResults = () => {
       <Container className='text-center text-white'>
         
         <h1 className='red-bg'>CREATORS RESULTS: </h1>
+        <h1 className='red-bg'>Search results for: {search}</h1>
 
         {
           creatorsList.map(info => {
@@ -82,7 +93,7 @@ const CreatorsResults = () => {
                         <Card style={{ width: '18rem' }}>
                           <Button variant='danger'><Link to={`/creators/${info.fullName}`} state={{creatorsID: info.id}} className="white">{info.fullName} {info.id}</Link></Button>
                           <br />
-                          <Card.Img variant="top" alt='Creator' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail" />
+                          <Card.Img variant="top" alt='Creator' src={`${info.thumbnail.path}.${info.thumbnail.extension}`} className="result-thumbnail" />
                           <br />
                         </Card>
                         <br />
@@ -95,9 +106,9 @@ const CreatorsResults = () => {
         {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={resetDecrementFetch()} >Back</Button>
-                <Button variant='danger' disabled >{count+1} of {total}</Button>
-                <Button variant='danger' onClick={resetIncrementFetch()} >More</Button>
+                <Button variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
+                <Button variant='danger' disabled >{oneOrZero()} of {total}</Button>
+                <Button variant='danger' onClick={resetIncrementFetch()} >Next</Button>
             </Col>
         </Row>
       </Container>

@@ -20,6 +20,7 @@ const Series = (props) => {
 
   const [seriesInfo, setSeriesInfo] = useState([])
   const [image, setImage] = useState()
+  const [extension, setExtension] = useState()
   const [rating, setRating] = useState()
 
   const [seriesID, setSeriesID] = useState()
@@ -38,10 +39,20 @@ const Series = (props) => {
 
     setSeriesInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
+    setExtension(details.data.results[0].thumbnail.extension)
     setRating(details.data.results[0].rating)
 
     setSeriesID(details.data.results[0].id)
     
+  }
+
+  const ratingFunc = () => {
+
+    if (rating === "") {
+      return "N/A";
+    } else {
+      return rating;
+    }
   }
 
   useEffect(()=> {
@@ -67,12 +78,14 @@ const Series = (props) => {
             <div>
               <Row>
                 <h1>{seriesInfo.title}</h1>
-                <p>Rating: {rating}</p>
+                <p>Rating: {ratingFunc()}</p>
                 <h2>Image</h2>
-                <img alt='serie' src={`${image}.jpg`} ></img>
+                <img alt='serie' src={`${image}.${extension}`} ></img>
               </Row>
             </div>
           }
+
+          <br />
 
         </Container>
 

@@ -25,7 +25,7 @@ const CharactersResults = () => {
     let {search} = useParams();
 
     const dispatch = useDispatch();
-    let items_characters_results = useSelector(state => state.charactersResults.items_characters_results)
+    const items_characters_results = useSelector(state => state.charactersResults.items_characters_results)
 
     let count = items_characters_results / 10
     
@@ -36,8 +36,8 @@ const CharactersResults = () => {
         const details = await data.json();
 
         // console.log(details.data)
-        console.log("items_characters_results", items_characters_results)
-        console.log("total2", total2)
+        // console.log("items_characters_results", items_characters_results)
+        // console.log("total2", total2)
         
         setCharacterList(details.data.results)
         setTotal(Math.ceil((details.data.total)/10))
@@ -64,6 +64,16 @@ const CharactersResults = () => {
         }
 
     }
+
+    const oneOrZero = () => {
+
+        if (total2 === 0) {
+            return 0;
+        } else {
+            return (count + 1);
+        }
+
+    }
         
     useEffect(() => {
             
@@ -77,6 +87,7 @@ const CharactersResults = () => {
         <Container className='text-center text-white'>
 
             <h1 className='red-bg'>CHARACTERS RESULTS: </h1>
+            <h1 className='red-bg'>Search results for: {search}</h1>
 
                     {
                         characterList.map(info => {
@@ -86,7 +97,7 @@ const CharactersResults = () => {
                                         <Card style={{ width: '18rem' }}>
                                             <Button variant='danger'><Link to={`/character/${info.name}`} className="white">{info.name}</Link></Button>
                                             <br />
-                                            <Card.Img variant="top" alt='Character' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail" />
+                                            <Card.Img variant="top" alt='Character' src={`${info.thumbnail.path}.${info.thumbnail.extension}`} className="result-thumbnail" />
                                             <br />
                                         </Card>
                                         <br />
@@ -99,9 +110,9 @@ const CharactersResults = () => {
             {/* {count+1} of {total} */}
             <Row>
                 <Col>
-                    <Button variant='danger' onClick={resetDecrementFetch()} >Back</Button>
-                    <Button variant='danger' disabled>{count+1} of {total}</Button>
-                    <Button variant='danger' onClick={resetIncrementFetch()} >More</Button>
+                    <Button variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
+                    <Button variant='danger' disabled>{oneOrZero()} of {total}</Button>
+                    <Button variant='danger' onClick={resetIncrementFetch()} >Next</Button>
                 </Col>
             </Row>
         </Container>

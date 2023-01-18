@@ -53,15 +53,25 @@ const ComicResults = () => {
 
 }
 
-const resetDecrementFetch = () => {
+  const resetDecrementFetch = () => {
 
-    if (items_comic_results <= 0) {
-        return () => dispatch(allActions.resetComicResultsAction(0))
+      if (items_comic_results <= 0) {
+          return () => dispatch(allActions.resetComicResultsAction(0))
+      } else {
+          return () => dispatch(allActions.decrementComicResultsAction(10))
+      }
+
+  }
+
+  const oneOrZero = () => {
+
+    if (total2 === 0) {
+        return 0;
     } else {
-        return () => dispatch(allActions.decrementComicResultsAction(10))
+        return (count + 1);
     }
 
-}
+  }
 
   useEffect(() => {
 
@@ -75,6 +85,7 @@ const resetDecrementFetch = () => {
       <Container className='text-center text-white'>
 
         <h1 className='red-bg'>COMICS RESULTS: </h1>
+        <h1 className='red-bg'>Search results for: {search}</h1>
 
         {
             comicList.map(info => {
@@ -84,7 +95,7 @@ const resetDecrementFetch = () => {
                         <Card style={{ width: '18rem' }}>
                           <Button variant='danger'><Link to={`/comic/${info.title}`} state={{comicID: info.id}} className="white">{info.title} {info.id}</Link></Button>
                           <br />
-                          <Card.Img variant="top" alt='Comic' src={`${info.thumbnail.path}.jpg`} className="result-thumbnail" />
+                          <Card.Img variant="top" alt='Comic' src={`${info.thumbnail.path}.${info.thumbnail.extension}`} className="result-thumbnail" />
                           <br />
                         </Card>
                         <br />
@@ -97,9 +108,9 @@ const resetDecrementFetch = () => {
         {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={resetDecrementFetch()} >Back</Button>
-                <Button variant='danger' disabled >{count+1} of {total}</Button>
-                <Button variant='danger' onClick={resetIncrementFetch()} >More</Button>
+                <Button variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
+                <Button variant='danger' disabled >{oneOrZero()} of {total}</Button>
+                <Button variant='danger' onClick={resetIncrementFetch()} >Next</Button>
             </Col>
         </Row>
       </Container>

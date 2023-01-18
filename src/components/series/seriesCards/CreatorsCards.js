@@ -26,8 +26,13 @@ const CreatorsCards = ({seriesID}) => {
   const [creatorsID3, setCreatorsID3] = useState()
   const [creatorsID4, setCreatorsID4] = useState()
 
+  const [total, setTotal] = useState()
+  const [total2, setTotal2] = useState()
+
   const dispatch = useDispatch();
   const items_creators = useSelector(state => state.creators.items_creators)
+
+  const count = items_creators / 4
 
   const creatorsDetail = async () => {
 
@@ -39,6 +44,9 @@ const CreatorsCards = ({seriesID}) => {
 
     // console.log("creators card details: ", details)
 
+    setTotal(Math.ceil((details.data.total)/4))
+    setTotal2(details.data.total)
+
     setCreators1(details.data.results[0])
     setCreators2(details.data.results[1])
     setCreators3(details.data.results[2])
@@ -48,6 +56,36 @@ const CreatorsCards = ({seriesID}) => {
     setCreatorsID2(details.data.results[1].id)
     setCreatorsID3(details.data.results[2].id)
     setCreatorsID4(details.data.results[3].id)
+
+  }
+
+  const resetIncrementFetch = () => {
+
+    if (((total2 - items_creators) < 4) || ((total2 - items_creators) === 4)) {
+        return () => dispatch(allActions.resetCreatorsAction(0))
+    } else {
+        return () => dispatch(allActions.incrementCreatorsAction(4))
+    }
+
+  }
+
+  const resetDecrementFetch = () => {
+
+      if (items_creators <= 0) {
+          return () => dispatch(allActions.resetCreatorsAction(0))
+      } else {
+          return () => dispatch(allActions.decrementCreatorsAction(4))
+      }
+
+  }
+
+  const oneOrZero = () => {
+
+      if (total2 === 0) {
+          return 0;
+      } else {
+          return (count + 1);
+      }
 
   }
 
@@ -127,8 +165,9 @@ const CreatorsCards = ({seriesID}) => {
           <br />
           <Row>
             <Col md={{offset: 5 }}>
-              <Button variant='danger' onClick={() => dispatch(allActions.decrementCreatorsAction(4))} >Back</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Button variant='danger' onClick={() => dispatch(allActions.incrementCreatorsAction(4))} >More</Button>
+              <Button variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
+              <Button variant='danger' disabled>{oneOrZero()} of {total}</Button>
+              <Button variant='danger' onClick={resetIncrementFetch()} >Next</Button>
             </Col>
           </Row>
         </Container>
