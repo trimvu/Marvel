@@ -86,6 +86,8 @@ const CreatorsResults = () => {
         <h1 className='red-bg'>Search results for: {search}</h1>
 
         {
+          creatorsList.length > 0
+          ?
           creatorsList.map(info => {
               return (
                   <Row className='mt-3 me-5' key={info.id}>
@@ -101,6 +103,8 @@ const CreatorsResults = () => {
                   </Row>
               )
           })
+          :
+          <div />
         }
         <br />
         {/* {count+1} of {total} */}

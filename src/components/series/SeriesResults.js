@@ -86,6 +86,8 @@ const SeriesResults = () => {
         <h1 className='red-bg'>Search result for: {search}</h1>
 
         {
+          eventsList.length > 0
+          ?
           eventsList.map(info => {
             return (
               <Row className='mt-3 me-5' key={info.id}>
@@ -101,6 +103,8 @@ const SeriesResults = () => {
               </Row>
             )
           })
+          :
+          <div />
         }
         <br />
         {/* {count+1} of {total} */}

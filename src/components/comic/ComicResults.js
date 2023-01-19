@@ -88,6 +88,8 @@ const ComicResults = () => {
         <h1 className='red-bg'>Search results for: {search}</h1>
 
         {
+            comicList.length > 0
+            ?
             comicList.map(info => {
                 return (
                     <Row className='mt-3 me-5' key={info.id}>
@@ -103,6 +105,8 @@ const ComicResults = () => {
                     </Row>
                 )
             })
+            :
+            <div />
         }
         <br />
         {/* {count+1} of {total} */}

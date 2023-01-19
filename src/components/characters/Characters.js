@@ -35,7 +35,7 @@ const Characters = () => {
 
     const details = await data.json(); 
 
-    console.log(details)
+    // console.log(details)
 
     setCharacterInfo(details.data.results[0]);
     // setAvailableSeries(details.data.results[0].series.available)
