@@ -74,6 +74,8 @@ const CharactersResults = () => {
         }
 
     }
+
+    // console.log('characterList', characterList.length)
         
     useEffect(() => {
             
@@ -90,6 +92,8 @@ const CharactersResults = () => {
             <h1 className='red-bg'>Search results for: {search}</h1>
 
                     {
+                        characterList.length > 0
+                        ?
                         characterList.map(info => {
                             return (
                                 <Row className='mt-3 me-5' key={info.id}>
@@ -105,6 +109,8 @@ const CharactersResults = () => {
                                 </Row>
                             ) 
                         })
+                        :
+                        <div />
                     }
             <br />
             {/* {count+1} of {total} */}
