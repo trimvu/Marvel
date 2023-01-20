@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { useDispatch, useSelector} from 'react-redux'
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import '../style/CharactersResults.css'
 
 import allActions from '../../actions'
@@ -27,7 +27,9 @@ const ComicResults = () => {
   const dispatch = useDispatch();
   const items_comic_results = useSelector(state => state.comicResults.items_comic_results)
 
-  let count = items_comic_results / 10
+  const count = items_comic_results / 10
+
+  const navigate = useNavigate();
 
   const comicListFetch = async () => {
 
@@ -95,10 +97,10 @@ const ComicResults = () => {
                     <Row className='mt-3 me-5' key={info.id}>
                       <Col sm={{ offset: 3 }} md={{ offset: 5 }}>
                         <Card style={{ width: '18rem' }}>
-                          <Button variant='danger'><Link to={`/comic/${info.title}`} state={{comicID: info.id}} className="white">{info.title} {info.id}</Link></Button>
-                          <br />
-                          <Card.Img variant="top" alt='Comic' src={`${info.thumbnail.path}.${info.thumbnail.extension}`} className="result-thumbnail" />
-                          <br />
+                          <Button onClick={() => navigate(`/comic/${info.title}`,{state:{comicID:info.id}})} id="custom-btn" variant='danger'><Link to={`/comic/${info.title}`} state={{comicID: info.id}} className="white">{info.title} {info.id}</Link></Button>
+                          
+                          <Card.Img onClick={() => navigate(`/comic/${info.title}`,{state:{comicID:info.id}})} state={{comicID: info.id}} variant="top" alt='Comic' src={`${info.thumbnail.path}.${info.thumbnail.extension}`} className="result-thumbnail" />
+                          
                         </Card>
                         <br />
                       </Col>
@@ -112,9 +114,9 @@ const ComicResults = () => {
         {/* {count+1} of {total} */}
         <Row>
             <Col>
-                <Button variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
-                <Button variant='danger' disabled >{oneOrZero()} of {total}</Button>
-                <Button variant='danger' onClick={resetIncrementFetch()} >Next</Button>
+                <Button id='previous-btn' variant='danger' onClick={resetDecrementFetch()} >Previous</Button>
+                <Button id='amount-of-pages-btn' variant='danger' disabled >{oneOrZero()} of {total}</Button>
+                <Button id='next-btn' variant='danger' onClick={resetIncrementFetch()} >Next</Button>
             </Col>
         </Row>
       </Container>

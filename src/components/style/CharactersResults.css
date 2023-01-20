@@ -1,3 +1,19 @@
 .result-thumbnail {
     width: 200px;
 }
+
+#custom-btn {
+    background-color: red;
+  }
+
+#previous-btn {
+    background-color: red;
+  }
+
+#amount-of-pages-btn {
+    background-color: red;
+  }
+
+#next-btn {
+    background-color: red;
+  }
