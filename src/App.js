@@ -42,7 +42,7 @@ const App = () => {
       <div className='search-div'>
           
           <form className='search-bar' onSubmit={handleSubmit}>
-            <select onChange={(e) => setOptionValue(e.target.value)}>
+            <select className='select-font' onChange={(e) => setOptionValue(e.target.value)}>
               <option disabled selected hidden>Choose Category</option>
               <option value="characters">Character</option>
               <option value="comic">Comic</option>
@@ -51,7 +51,7 @@ const App = () => {
               <option value="series">Series</option>
             </select> <br /><br />
               <input type="text" value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} required/> <br /><br />
-              <input type="submit" />
+              <input className='submit-font' type="submit" />
           </form>
           
       </div>
