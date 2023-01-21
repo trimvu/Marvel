@@ -111,7 +111,7 @@ const CreatorsCards = ({comicID}) => {
                   <Card.Img variant="top" src={`${creators1.thumbnail.path}.${creators1.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{creators1.fullName}</Card.Title>
-                    <Button variant="danger"><Link to={`/creators/${creators1.fullName}`} state={{creatorsID: creatorsID1}} className="white">View creators {creatorsID1}</Link></Button>
+                    <Button variant="danger"><Link to={`/creators/${creators1.fullName}`} state={{creatorsID: creatorsID1}} className="white">View creator {creatorsID1}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -126,7 +126,7 @@ const CreatorsCards = ({comicID}) => {
                   <Card.Img variant="top" src={`${creators2.thumbnail.path}.${creators2.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{creators2.fullName}</Card.Title>
-                    <Button variant="danger"><Link to={`/creators/${creators2.fullName}`} state={{creatorsID: creatorsID2}} className="white">View creators {creatorsID2}</Link></Button>
+                    <Button variant="danger"><Link to={`/creators/${creators2.fullName}`} state={{creatorsID: creatorsID2}} className="white">View creator {creatorsID2}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -141,7 +141,7 @@ const CreatorsCards = ({comicID}) => {
                   <Card.Img variant="top" src={`${creators3.thumbnail.path}.${creators3.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{creators3.fullName}</Card.Title>
-                    <Button variant="danger"><Link to={`/creators/${creators3.fullName}`} state={{creatorsID: creatorsID3}} className="white">View creators {creatorsID3}</Link></Button>
+                    <Button variant="danger"><Link to={`/creators/${creators3.fullName}`} state={{creatorsID: creatorsID3}} className="white">View creator {creatorsID3}</Link></Button>
                   </Card.Body>
                 </Card>
               }
@@ -156,7 +156,7 @@ const CreatorsCards = ({comicID}) => {
                   <Card.Img variant="top" src={`${creators4.thumbnail.path}.${creators4.thumbnail.extension}`} />
                   <Card.Body>
                     <Card.Title>{creators4.fullName}</Card.Title>
-                    <Button variant="danger"><Link to={`/creators/${creators4.fullName}`} state={{creatorsID: creatorsID4}} className="white">View creators {creatorsID4}</Link></Button>
+                    <Button variant="danger"><Link to={`/creators/${creators4.fullName}`} state={{creatorsID: creatorsID4}} className="white">View creator {creatorsID4}</Link></Button>
                   </Card.Body>
                 </Card>
               }
