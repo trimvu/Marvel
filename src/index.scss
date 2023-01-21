@@ -1,6 +1,6 @@
 $glass: rgba(255, 255, 255, 0.2);
 $glass-icon: rgba(255, 255, 255, 0.3);
-$gradient: linear-gradient(35deg, red, purple);
+$gradient: linear-gradient(35deg, red, white);
 $option: #320a28;
 
 body {
@@ -30,6 +30,9 @@ select {
     color: inherit;
     background-color: $option;
   }
+  input {
+    color: inherit;
+  }
   /* Remove focus outline */
   &:focus {
     outline: none;
@@ -39,3 +42,32 @@ select {
     display: none;
   }
 }
+
+input {
+    /* Reset */
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    /* Personalize */
+    width: 20em;
+    height: 3em;
+    padding: 0 4em 0 1em;
+    background: url()
+        no-repeat right 0.8em center / 1.4em, $glass;
+    color: white;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    input {
+      color: inherit;
+    }
+    /* Remove focus outline */
+    &:focus {
+      outline: none;
+    }
+    /* Remove IE arrow */
+    &::-ms-expand {
+      display: none;
+    }
+  }
+  
