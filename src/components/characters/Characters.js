@@ -71,7 +71,7 @@ const Characters = () => {
             <Row>
               <h1>{characterInfo.name}</h1>
               <p>{characterInfo.description}</p>
-              <img alt='character' src={`${image}.${extension}`} ></img>
+              <img alt='character' src={`${image}.${extension}`} id='img-size'></img>
             </Row>
           </div>
         }

@@ -11,6 +11,8 @@ body {
   background-repeat: no-repeat; */
   color: white;
   list-style: none;
+  /* height: 100vh; */
+  
 }
 
 body::after {
@@ -44,7 +46,7 @@ code {
   padding-top: 5px;
   padding-bottom: 5px;
   /* z-index: 100; */
-  font-size: 3vh;
+  font-size: 2.5vh;
   /* font-weight: bold; */
 }
 
@@ -58,11 +60,11 @@ code {
 }
 
 .select-font {
-  font-size: 2vh;
+  font-size: 1.75vh;
 }
 
 .submit-font {
-  font-size: 2vh;
+  font-size: 1.75vh;
 }
 
 .options {
