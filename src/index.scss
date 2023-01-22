@@ -1,10 +1,20 @@
 $glass: rgba(255, 255, 255, 0.2);
+$glass-onion: rgba(202, 0, 0, 0.8);
 $glass-icon: rgba(255, 255, 255, 0.3);
-$gradient: linear-gradient(35deg, red, white);
+$gradient: linear-gradient(270deg, red, white);
 $option: #320a28;
 
 body {
   background: $gradient;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+//   position: fixed;
+  z-index: -1;
 }
 
 /* <select> styles */
@@ -23,7 +33,7 @@ select {
     linear-gradient(to left, $glass-icon 3em, $glass 3em);
   color: white;
   border-radius: 0.25em;
-  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.9);
   cursor: pointer;
   /* <option> colors */
   option {
@@ -57,7 +67,7 @@ input {
         no-repeat right 0.8em center / 1.4em, $glass;
     color: white;
     border-radius: 0.25em;
-    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.9);
     input {
       color: inherit;
     }

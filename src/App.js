@@ -50,7 +50,7 @@ const App = () => {
               <option value="events">Events</option>
               <option value="series">Series</option>
             </select> <br /><br />
-              <input type="text" value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} required/> <br /><br />
+              <input type="text" placeholder='Search...' value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} required/> <br /><br />
               <input className='submit-font' type="submit" />
           </form>
           

@@ -2,6 +2,13 @@ body {
     color: white;
 }
 
+#img-size {
+    width: 50vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .center-text {
     text-align: center;
 }
