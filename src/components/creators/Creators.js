@@ -69,7 +69,7 @@ const Creators = (props) => {
             <Row>
               <h1>{creatorsInfo.fullName}</h1>
               {/* <p>{description}</p> */}
-              <img alt='creator' src={`${image}.${extension}`} ></img>  
+              <img alt='creator' src={`${image}.${extension}`} id='img-size' ></img>  
             </Row>
           </div>
 

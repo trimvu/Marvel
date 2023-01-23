@@ -12,3 +12,7 @@ body {
 .center-text {
     text-align: center;
 }
+
+#custom-bg {
+    background-color: red;
+  }

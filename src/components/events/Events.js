@@ -70,7 +70,7 @@ const Events = (props) => {
               <Row>
                 <h1>{eventsInfo.title}</h1>
                 <p>{description}</p>
-                <img alt='event' src={`${image}.${extension}`} ></img>
+                <img alt='event' src={`${image}.${extension}`} id='img-size' ></img>
               </Row>
             </div>
 

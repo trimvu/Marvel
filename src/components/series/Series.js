@@ -80,7 +80,7 @@ const Series = (props) => {
                 <h1>{seriesInfo.title}</h1>
                 <p>Rating: {ratingFunc()}</p>
                 <h2>Image</h2>
-                <img alt='serie' src={`${image}.${extension}`} ></img>
+                <img alt='serie' src={`${image}.${extension}`} id='img-size' ></img>
               </Row>
             </div>
           }

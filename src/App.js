@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
+import allActions from './actions'
 
 const App = () => {
 
@@ -26,6 +28,9 @@ const App = () => {
 
   // }
 
+    const dispatch = useDispatch();
+  const items_series_results = useSelector(state => state.seriesResults.items_series_results)
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // setSubmittedSearchInput(searchInput)
@@ -44,11 +49,11 @@ const App = () => {
           <form className='search-bar' onSubmit={handleSubmit}>
             <select className='select-font' onChange={(e) => setOptionValue(e.target.value)}>
               <option disabled selected hidden>Choose Category</option>
-              <option value="characters">Character</option>
-              <option value="comic">Comic</option>
-              <option value="creators">Creators</option>
-              <option value="events">Events</option>
-              <option value="series">Series</option>
+              <option value="characters" onChange={() => dispatch(allActions.resetCharactersResultsAction(0))}>Character</option>
+              <option value="comic" onChange={() => dispatch(allActions.resetComicResultsAction(0))}>Comic</option>
+              <option value="creators" onChange={() => dispatch(allActions.resetCreatorsResultsAction(0))}>Creators</option>
+              <option value="events" onChange={() => dispatch(allActions.resetEventsResultsAction(0))}>Events</option>
+              <option value="series" onChange={() => dispatch(allActions.resetSeriesResultsAction(0))}>Series</option>
             </select> <br /><br />
               <input type="text" placeholder='Search...' value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} required/> <br /><br />
               <input className='submit-font' type="submit" />

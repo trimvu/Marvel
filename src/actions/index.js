@@ -28,6 +28,7 @@ import resetEventsAction from './resetEventsAction'
 import resetEventsResultsAction from './resetEventsResultsAction'
 import resetSeriesAction from './resetSeriesAction'
 import resetSeriesResultsAction from './resetSeriesResultsAction'
+import resetResultsAction from './resetResultsAction'
 
 const allActions = {
     decrementCharactersAction,
@@ -59,7 +60,8 @@ const allActions = {
     resetEventsAction,
     resetEventsResultsAction,
     resetSeriesAction,
-    resetSeriesResultsAction
+    resetSeriesResultsAction,
+    resetResultsAction
 }
 
 export default allActions
