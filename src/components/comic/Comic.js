@@ -72,7 +72,7 @@ const Comic = (props) => {
               <h1>{comicInfo.title}</h1>
               <p>Price: ${price}</p>
               <h2>Image</h2>
-              <img alt='comic' src={`${image}.${extension}`} ></img>
+              <img alt='comic' src={`${image}.${extension}`} id='img-size' ></img>
             </Row>
           </div>
         }
