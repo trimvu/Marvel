@@ -9,7 +9,7 @@ const App = () => {
   // const API_KEY = process.env.REACT_APP_API_KEY
 
   const [searchInput, setSearchInput] = useState("");
-  const [optionValue, setOptionValue] = useState("")
+  const [optionValue, setOptionValue] = useState("characters");
 
   const navigate = useNavigate();
 
@@ -41,14 +41,22 @@ const App = () => {
 
   }
 
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    const selectedOption = e.target.value;
+
+    setOptionValue(selectedOption)
+  }
+
   return (
     <>
       {/* App */} <br />
       <div className='search-div'>
           
           <form className='search-bar' onSubmit={handleSubmit}>
-            <select className='select-font' onChange={(e) => setOptionValue(e.target.value)}>
-              <option disabled selected hidden>Choose Category</option>
+            <select className='select-font' onChange={handleChange}>
+              <option value="characters" disabled selected hidden>Choose Category</option>
               <option value="characters" onChange={() => dispatch(allActions.resetCharactersResultsAction(0))}>Character</option>
               <option value="comic" onChange={() => dispatch(allActions.resetComicResultsAction(0))}>Comic</option>
               <option value="creators" onChange={() => dispatch(allActions.resetCreatorsResultsAction(0))}>Creators</option>
