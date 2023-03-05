@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -28,8 +28,16 @@ const App = () => {
 
   // }
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const items_series_results = useSelector(state => state.seriesResults.items_series_results)
+
+  const loadReset = () => {
+    dispatch(allActions.resetCharactersResultsAction(0));
+    dispatch(allActions.resetComicResultsAction(0));
+    dispatch(allActions.resetCreatorsResultsAction(0));
+    dispatch(allActions.resetEventsResultsAction(0));
+    dispatch(allActions.resetSeriesResultsAction(0));
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,6 +57,10 @@ const App = () => {
     setOptionValue(selectedOption)
   }
 
+  useEffect(() => {
+    loadReset();
+  }, [])
+
   return (
     <>
       {/* App */} <br />
@@ -57,11 +69,11 @@ const App = () => {
           <form className='search-bar' onSubmit={handleSubmit}>
             <select className='select-font' onChange={handleChange}>
               <option value="characters" disabled selected hidden>Choose Category</option>
-              <option value="characters" onChange={() => dispatch(allActions.resetCharactersResultsAction(0))}>Character</option>
-              <option value="comic" onChange={() => dispatch(allActions.resetComicResultsAction(0))}>Comic</option>
-              <option value="creators" onChange={() => dispatch(allActions.resetCreatorsResultsAction(0))}>Creators</option>
-              <option value="events" onChange={() => dispatch(allActions.resetEventsResultsAction(0))}>Events</option>
-              <option value="series" onChange={() => dispatch(allActions.resetSeriesResultsAction(0))}>Series</option>
+              <option value="characters">Character</option>
+              <option value="comic">Comic</option>
+              <option value="creators">Creators</option>
+              <option value="events">Events</option>
+              <option value="series">Series</option>
             </select> <br /><br />
               <input type="text" placeholder='Search...' value={searchInput} onChange={(e)=> setSearchInput(e.target.value)} required/> <br /><br />
               <input className='submit-font' type="submit" />

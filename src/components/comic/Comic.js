@@ -9,6 +9,7 @@ import EventsCards from './comicCards/EventsCards'
 
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import FavoritesButton from '../FavoritesButton'
 
 const Comic = (props) => {
 
@@ -24,6 +25,9 @@ const Comic = (props) => {
   const [price, setPrice] = useState()
 
   const [comicID, setComicID] = useState()
+  const [comicName, setComicName] = useState('')
+
+  const category = 'comic'
 
   const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -35,7 +39,7 @@ const Comic = (props) => {
 
     const details = await data.json();
 
-    console.log("comic details:", details)
+    // console.log("comic details:", details)
 
     setComicInfo(details.data.results[0])
     setImage(details.data.results[0].thumbnail.path)
@@ -43,6 +47,7 @@ const Comic = (props) => {
     setPrice(details.data.results[0].prices[0].price)
 
     setComicID(details.data.results[0].id)
+    setComicName(details.data.results[0].title)
   }
 
   // console.log("comic ID: ", comicID)
@@ -59,6 +64,8 @@ const Comic = (props) => {
         {/* <h2>ComicID: {location.state.comicID}</h2> */}
       <br />
       <Container className='text-center bg-danger text-white'>
+
+        <FavoritesButton name={comicName} image={image} category={category} marvelID={comicID} />
       
         <h1>COMIC INFO: </h1>
         

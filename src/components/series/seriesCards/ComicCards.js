@@ -89,11 +89,23 @@ const ComicCards = ({seriesID}) => {
 
   }
 
+  const loadReset = () => {
+
+    dispatch(allActions.resetComicAction(0))
+
+  }
+
   useEffect(() => {
 
       comicDetail();
 
   }, [items_comic, seriesID])
+
+  useEffect(() => {
+
+    loadReset();
+    
+  }, [])
 
   return (
     <>
