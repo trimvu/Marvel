@@ -9,6 +9,7 @@ import SeriesCards from './eventsCards/SeriesCards'
 
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import FavoritesButton from '../FavoritesButton'
 
 const Events = (props) => {
 
@@ -24,6 +25,9 @@ const Events = (props) => {
   const [description, setDescription] = useState()
 
   const [eventsID, setEventsID] = useState()
+  const [eventName, setEventName] = useState('')
+
+  const category = 'events'
 
   const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -43,6 +47,7 @@ const Events = (props) => {
     setDescription(details.data.results[0].description)
 
     setEventsID(details.data.results[0].id)
+    setEventName(details.data.results[0].title)
 
   }
 
@@ -58,6 +63,8 @@ const Events = (props) => {
         {/* <h2>EventsID: {location.state.eventsID}</h2> */}
         <br />
         <Container className='text-center bg-danger text-white'>
+
+          <FavoritesButton name={eventName} image={image} category={category} marvelID={eventsID} />
 
           <h1>EVENT INFO: </h1>
 

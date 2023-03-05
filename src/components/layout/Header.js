@@ -18,7 +18,9 @@ const Header = () => {
         <div className='header'>
           
               
-              <Link to="/" className='white'>Home</Link>
+              <Link to="/" className='white nav-spacing'>Home</Link>
+              {' '}
+              <Link to="/favorites" className='white nav-spacing'>Favorites</Link>
               {/* <a>Home</a> */}
               
           

@@ -9,6 +9,7 @@ import SeriesCards from './creatorsCards/SeriesCards'
 import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import FavoritesButton from '../FavoritesButton'
 
 const Creators = (props) => {
 
@@ -23,6 +24,9 @@ const Creators = (props) => {
   const [extension, setExtension] = useState()
 
   const [creatorsID, setCreatorsID] = useState()
+  const [creatorName, setCreatorName] = useState('')
+
+  const category = 'creators'
 
   const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -41,6 +45,7 @@ const Creators = (props) => {
     setExtension(details.data.results[0].thumbnail.extension)
 
     setCreatorsID(details.data.results[0].id)
+    setCreatorName(details.data.results[0].fullName)
 
   }
 
@@ -58,6 +63,7 @@ const Creators = (props) => {
         {/* <h2>CreatorsID: {location.state.creatorsID}</h2> */}
       <br />
       <Container className='text-center bg-danger text-white'>
+        <FavoritesButton name={creatorName} image={image} category={category} marvelID={creatorsID} />
         <h1>CREATOR INFO: </h1>
 
         {

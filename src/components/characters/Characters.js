@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-// import { useDispatch } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 import '../style/Characters.css'
 
 import ComicCards from './characterCards/ComicCards'
@@ -10,6 +10,8 @@ import SeriesCards from './characterCards/SeriesCards'
 import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import allActions from '../../actions'
+import FavoritesButton from '../FavoritesButton'
 
 const Characters = () => {
   
@@ -20,12 +22,19 @@ const Characters = () => {
   const [image, setImage] = useState()
   // const [description, setDescription] = useState()
   const [extension, setExtension] = useState()
+  const [charName, setCharName] = useState('')
 
   const [characterID, setCharacterID] = useState()
 
   const [additionalInfo, setAdditionalInfo] = useState()
 
+  const category = 'character'
+
   // const dispatch = useDispatch();
+  
+  // const uhh = useSelector(state => state.favorite.favorites)
+
+  // console.log("uhh", uhh)
   
   let {character} = useParams()
 
@@ -45,8 +54,21 @@ const Characters = () => {
     setCharacterID(details.data.results[0].id)
     
     setAdditionalInfo(details.data.results[0].urls[0].url)
+    setCharName(details.data.results[0].name)
 
   }
+  
+  // const handleFavorite = () => {
+    
+  //   dispatch(allActions.addFavoriteAction(characterInfo.name, image, category, characterID))
+
+  // }
+
+  // const handleUnfavorite = () => {
+
+  //   dispatch(allActions.deleteFavoriteAction(filtered[0].id))
+    
+  // }
 
   // console.log("characterID", characterID)
 
@@ -56,10 +78,28 @@ const Characters = () => {
 
   }, [characterID, image])
 
+  // const filtered = uhh.filter(e => (e.marvelID === characterID))
+
+  // console.log("filtered", filtered)
+
   return (
     <>
       <br />
       <Container className='text-center bg-danger text-white'>
+
+        {/* {
+          filtered.length > 0
+          ?
+          <button onClick={handleUnfavorite}>UNFAVORITE</button>
+          :
+          <button onClick={handleFavorite}>FAVORITE</button>
+
+        } */}
+
+        <FavoritesButton name={charName} image={image} category={category} marvelID={characterID} />
+
+        {/* <button onClick={handleFavorite}>FAVORITE</button> */}
+
         <h1>CHARACTER INFO: </h1>
 
         {

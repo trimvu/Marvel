@@ -29,6 +29,9 @@ import resetEventsResultsAction from './resetEventsResultsAction'
 import resetSeriesAction from './resetSeriesAction'
 import resetSeriesResultsAction from './resetSeriesResultsAction'
 import resetResultsAction from './resetResultsAction'
+import addFavoriteAction from './addFavoriteAction'
+import deleteFavoriteAction from './deleteFavoriteAction'
+import undoDeleteFavoriteAction from './undoDeleteFavoriteAction'
 
 const allActions = {
     decrementCharactersAction,
@@ -61,7 +64,10 @@ const allActions = {
     resetEventsResultsAction,
     resetSeriesAction,
     resetSeriesResultsAction,
-    resetResultsAction
+    resetResultsAction,
+    addFavoriteAction,
+    deleteFavoriteAction,
+    undoDeleteFavoriteAction
 }
 
 export default allActions

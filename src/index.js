@@ -22,6 +22,7 @@ import {createStore} from 'redux'
 import rootReducer from './reducers/index';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Favorites from './components/Favorites';
 
 const store = createStore(
   rootReducer,
@@ -36,6 +37,7 @@ root.render(
       <BaseLayout>
         <Routes>
           <Route path='/' element={<App /> } />
+          <Route path='/favorites' element={<Favorites />} />
           <Route path='/characters-results/:search' element={<CharactersResults /> } />
           <Route path='/character/:character' element={<Characters /> } />
           <Route path='/comic-results/:search' element={<ComicResults /> } />

@@ -89,11 +89,23 @@ const CreatorsCards = ({seriesID}) => {
 
   }
 
+  const loadReset = () => {
+
+    dispatch(allActions.resetCreatorsAction(0))
+
+  }
+
   useEffect(() => {
 
     creatorsDetail();
 
   }, [items_creators, seriesID])
+
+  useEffect(() => {
+
+    loadReset();
+    
+  }, [])
 
   return (
     <>

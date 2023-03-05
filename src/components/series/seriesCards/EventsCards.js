@@ -87,11 +87,23 @@ const EventsCards = ({seriesID}) => {
 
   }
 
+  const loadReset = () => {
+
+    dispatch(allActions.resetEventsAction(0))
+
+  }
+
   useEffect(() => {
 
     eventsDetail();
 
   }, [items_events, seriesID])
+
+  useEffect(() => {
+
+    loadReset();
+    
+  }, [])
 
   return (
     <>
